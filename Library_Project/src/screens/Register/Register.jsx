@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_KEY } from '../../logic/key'
+import { API_KEY } from '../../../logic/key'
 
 const Register = ({ setAuth }) => {
     const [userEmail, setUserEmail] = useState("");

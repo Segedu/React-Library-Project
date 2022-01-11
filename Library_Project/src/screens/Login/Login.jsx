@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { API_KEY } from '../../logic/key';
+import { API_KEY } from '../../../logic/key';
 
 const Login = ({ setAuth }) => {
     const [email, setEmail] = useState("");
