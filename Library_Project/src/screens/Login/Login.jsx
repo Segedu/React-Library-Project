@@ -34,23 +34,19 @@ const Login = ({ setAuth }) => {
         }
     }
 
-    return (<div className="Register">
-
-        <div class="card-body">
-            <h5 class="card-title">Login Here</h5>
-        </div>
-        <form onSubmit={(e) => {
-            e.preventDefault(),
-                login()
-        }}>   <p class="card-text">
-
+    return (
+        <div className="Register">
+            <h5>Login Here</h5>
+            <form onSubmit={(e) => {
+                e.preventDefault(),
+                    login()
+            }}>
                 <input type="emil" placeholder="Enter Your Email" onChange={(e) => { setEmail(e.target.value) }} /><br></br>
                 <input type="password" placeholder="Enter Your Password" onChange={(e) => { setPassword(e.target.value) }} /><br></br>
                 <input type="submit" value="Log-In" />
-            </p>
-        </form>
-        <h3>{errorFromServer ? "Error from server during Login" : ""}</h3>
-    </div>)
+            </form>
+            <h3>{errorFromServer ? "Error from server during Login" : ""}</h3>
+        </div >)
 }
 
 export default Login
