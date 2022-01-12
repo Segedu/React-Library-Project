@@ -4,8 +4,7 @@ import ReadingList from "../ReadingList/ReadingList";
 const Details = ({ bookDetails, userGrade }) => {
     const [notes, setNotes] = useState([]);
     const [newNoteName, setNewNoteName] = useState([])
-    // const [print, setPrint] = useState(false)
-
+    
     // todo: book id , user note, grade, email
     let id = 0;
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) }
