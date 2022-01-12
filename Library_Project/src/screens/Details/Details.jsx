@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react"
 import ReadingList from "../ReadingList/ReadingList";
 
-const Details = ({ bookDetails, userGrade }) => {
+const Details = ({ bookDetails, bookRate }) => {
     const [notes, setNotes] = useState([]);
     const [newNoteName, setNewNoteName] = useState([])
     

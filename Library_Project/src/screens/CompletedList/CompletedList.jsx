@@ -5,22 +5,20 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 
 const CompletedList =
-    ({ setCompletedList, completedList, setBookDetails, setUserGrade }) => {
-        const [data, setData] = useState("")
+    ({ setCompletedList, completedList, setBookDetails }) => {
+        const [bookRate, setBookRate] = useState("")
         const removeFromList = (bookId, listName, setFunction) => {
-            const removeArray = [...listName].filter(book => book.id !== bookId)
-            setFunction(removeArray)
+            const removeArray = [...listName].filter(book => book.id !== bookId);
+            setFunction(removeArray);
         }
 
         const showBookDetails = (bookId) => {
-            const foundBook = completedList.find(book => book.id === bookId)
+            const foundBook = completedList.find(book => book.id === bookId);
             setBookDetails(foundBook)
         }
-        const isSelected = () => true;
+        const isSelected = (value) => bookRate === value;
 
-        const handleRadioClick = () => {
-            console.log("clicked");
-        }
+        const handleRadioClick = (e) => setBookRate(e.currentTarget.value);
 
         const elements = completedList.map((completed, id) =>
             <article key={id}>
@@ -71,7 +69,7 @@ const CompletedList =
                 <section>
                     {elements}
                 </section>
-                <h1>{data}</h1>
+                <h1>{bookRate}</h1>
             </Fragment>)
     }
 
