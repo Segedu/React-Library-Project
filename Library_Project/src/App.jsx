@@ -10,18 +10,17 @@ import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
 import './App.css';
 
-function App() {
+function App({bookRate}) {
   const [auth, setAuth] = useState(null);
   const [books, setBooks] = useState([]);
   const [completedList, setCompletedList] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const [bookDetails, setBookDetails] = useState("");
-  const [userGrade, setUserGrade] = useState("");
 
   return (
     <BrowserRouter>
       <div className="App">
-        {bookDetails ? <Details bookDetails={bookDetails} userGrade={userGrade} /> : ""}
+        {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""}
         {!auth ? (
           <>
             <Link to="/">The Library</Link><span> </span>
@@ -43,7 +42,7 @@ function App() {
           <Route exact path="/Search" render={() => <Search setBooks={setBooks} books={books}
             setReadingList={setReadingList}
             readingList={readingList} />} />
-          <Route exact path="/CompletedList" render={() => <CompletedList setUserGrade={setUserGrade} setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} />} />
+          <Route exact path="/CompletedList" render={() => <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} />} />
           <Route exact path="/ReadingList" render={() =>
             <ReadingList setReadingList={setReadingList} readingList={readingList} setCompletedList={setCompletedList} setBookDetails={setBookDetails}
               completedList={completedList} />} />
