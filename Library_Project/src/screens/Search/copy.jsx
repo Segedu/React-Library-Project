@@ -1,43 +1,27 @@
-//  // אם הוא מצא במערך אחד אין לאפשר לו להמשיך לחפש
-//     // עבור הסטרינג, לשכפל גם את הספר באמצעות temp וגם את האינפוט מהלקוח
 
-//     function searchStringInAuthorTitleDescription(inputData) {
-        let userInput = inputData.toLowerCase()
-        tempBook.forEach(element => {
-            let array = element.title.toLowerCase()
-            element.title = array;
-            if (array.indexOf(userInput > -1)) {
-                console.log(userInput, "exist");
-            }
-        })
-        // tempBook.forEach(element => {
-        //     let array = element.description.toLowerCase()
-        //     element.description = array;
-        //     if (array.indexOf(userInput > -1)) {
-        //         console.log(userInput, "exist");
-        //     }
-        // })
-        // tempBook.forEach(element => {
-        //     let array = element.author.toLowerCase()
-        //     element.author = array;
-        //     if (array.indexOf(userInput > -1)) {
-        //         console.log(userInput, "exist");
-        //     }
-        // })
+function searchStringInAuthorTitleDescription(inputData) {
+    let userInput = inputData.toLowerCase()
+    tempBook.forEach(element => {
+        element.title = element.title.toLowerCase();
+        element.description = element.description.toLowerCase()
+        element.author = element.author.toLowerCase()
+        if (tempBook.indexOf(userInput > -1)) {
+            return tempBook[userInput]
+        }
+    })
 
-        setTempBook(tempBook);
+    setTempBook(tempBook);
+}
 
+const titleFilter = tempBook.filter(book => book.title.match(inputData));
+const authorFilter = tempBook.filter(book => book.author.match(inputData));
+const descriptionFilter = tempBook.filter(book => book.description.match(inputData));
 
-//         const titleFilter = tempBook.filter(book => book.title.includes(inputData));
-//         const authorFilter = tempBook.filter(book => book.author.includes(inputData));
-//         const descriptionFilter = tempBook.filter(book => book.description.includes(inputData));
+let searchesResultArray = titleFilter.concat(authorFilter).concat(descriptionFilter);
 
-//         let searchesResultArray = titleFilter.concat(authorFilter).concat(descriptionFilter);
-
-//         let uniqueArray = [...new Set(searchesResultArray)];
-//         let shortenArray = uniqueArray.splice(0, 10);
-//         setSearchBooksArray(shortenArray)
+let uniqueArray = [...new Set(searchesResultArray)];
+let shortenArray = uniqueArray.splice(0, 10);
+setSearchBooksArray(shortenArray)
 
 
 
-//     }

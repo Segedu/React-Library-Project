@@ -10,7 +10,7 @@ import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
 import './App.css';
 
-function App({bookRate}) {
+function App({ bookRate }) {
   const [auth, setAuth] = useState(null);
   const [books, setBooks] = useState([]);
   const [completedList, setCompletedList] = useState([]);
@@ -21,7 +21,6 @@ function App({bookRate}) {
     <BrowserRouter>
       <div className="App">
         {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""}
-        {/* {!bookDetails ?} */}
         {!auth ? (
           <>
             <Link to="/">The Library</Link><span> </span>
