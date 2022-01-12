@@ -16,6 +16,11 @@ const CompletedList =
             const foundBook = completedList.find(book => book.id === bookId)
             setBookDetails(foundBook)
         }
+        const isSelected = () => true;
+
+        const handleRadioClick = () => {
+            console.log("clicked");
+        }
 
         const elements = completedList.map((completed, id) =>
             <article key={id}>
@@ -54,7 +59,7 @@ const CompletedList =
                     value="fiveStars"
                     checked={isSelected("fiveStars")}
                     onChange={handleRadioClick}
-                />
+                /><br></br>
                 <Tooltip title="Remove from Completed" placement="top">
                     <Button> <BiBook fontSize="x-large" onClick={() => removeFromList(completed.id, completedList, setCompletedList)} /></Button>
                 </Tooltip>
