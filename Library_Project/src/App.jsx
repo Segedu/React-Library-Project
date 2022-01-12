@@ -21,6 +21,7 @@ function App({bookRate}) {
     <BrowserRouter>
       <div className="App">
         {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""}
+        {/* {!bookDetails ?} */}
         {!auth ? (
           <>
             <Link to="/">The Library</Link><span> </span>

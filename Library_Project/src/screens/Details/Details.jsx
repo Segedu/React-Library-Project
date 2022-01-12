@@ -4,9 +4,9 @@ import ReadingList from "../ReadingList/ReadingList";
 const Details = ({ bookDetails, bookRate }) => {
     const [notes, setNotes] = useState([]);
     const [newNoteName, setNewNoteName] = useState([]);
-    // const [flag, setFlag] = useState(false);
-
+   
     // todo: book id , user note, grade, email
+  
     let id = 0;
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) }
 
@@ -30,10 +30,10 @@ const Details = ({ bookDetails, bookRate }) => {
         <p >{bookDetails.volumeInfo.description}</p>
         <textarea placeholder="Notes" onChange={(e) => { bookDetails.volumeInfo.note = addTaskInputHandler(e) }} /><br></br>
         <h3>{bookDetails.volumeInfo.note}</h3>
-        <h3>{bookRate}</h3>
+        <h3>Book Rate:{bookRate}</h3>
         <button onClick={() => AddNote(newNoteName)}>save note</button>
         <article>{notes ? elements : bookDetails}</article>
-        {/* <article>{newNoteName ? "" : bookDetails}</article> */}
+        <article>{newNoteName ? "" : bookDetails}</article>
 
 
     </Fragment>)
