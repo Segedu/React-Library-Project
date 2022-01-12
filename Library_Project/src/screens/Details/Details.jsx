@@ -14,10 +14,9 @@ const Details = ({ bookDetails, userGrade }) => {
         let obj = { id: id++, text: todo }
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
-        // return notesArray
     }
 
-    let elements = notes.map((note) =>
+    let elements = notes.map(note =>
         <ul>
             <li key={note.id}>{note.text}</li>
         </ul>
