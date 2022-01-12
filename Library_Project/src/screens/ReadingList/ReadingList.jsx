@@ -3,7 +3,7 @@ import { BiBookBookmark, BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import '../ReadingList/ReadingList.css';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const ReadingList =
     ({ setReadingList, readingList,
