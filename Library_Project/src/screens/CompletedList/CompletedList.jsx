@@ -23,13 +23,38 @@ const CompletedList =
                 <p>{completed.volumeInfo.author}</p>
                 <img onClick={() => { showBookDetails(completed.id) }} src={completed.volumeInfo.imageLinks?.thumbnail || ""} />
                 <p className="Description">{completed.volumeInfo.description}</p>
-                {/* <select value={e.target.value} onChange={setData(e.target.value)}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select> */}
+                <input
+                    type="radio"
+                    name="star"
+                    value="oneStar"
+                    checked={isSelected("oneStar")}
+                    onChange={handleRadioClick}
+                />  <input
+                    type="radio"
+                    name="star"
+                    value="twoStars"
+                    checked={isSelected("twoStars")}
+                    onChange={handleRadioClick}
+                />  <input
+                    type="radio"
+                    name="star"
+                    value="threeStars"
+                    checked={isSelected("threeStars")}
+                    onChange={handleRadioClick}
+                />  <input
+                    type="radio"
+                    name="star"
+                    value="fourStars"
+                    checked={isSelected("fourStars")}
+                    onChange={handleRadioClick}
+                />
+                <input
+                    type="radio"
+                    name="star"
+                    value="fiveStars"
+                    checked={isSelected("fiveStars")}
+                    onChange={handleRadioClick}
+                />
                 <Tooltip title="Remove from Completed" placement="top">
                     <Button> <BiBook fontSize="x-large" onClick={() => removeFromList(completed.id, completedList, setCompletedList)} /></Button>
                 </Tooltip>
