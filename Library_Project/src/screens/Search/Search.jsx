@@ -49,13 +49,13 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
 
     const elements = books.map((book, id) =>
         <article key={id}>
+            <Tooltip title="Add To Read List" placement="top">
+                <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
+            </Tooltip>
             <h3>{book.volumeInfo.title}</h3>
             <p>{book.volumeInfo.authors}</p>
             <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
             <p className="Description">{book.volumeInfo.description}</p>
-            <Tooltip title="Add To Read List" placement="top">
-                <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
-            </Tooltip>
 
         </article>);
 
