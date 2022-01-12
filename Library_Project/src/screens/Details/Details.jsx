@@ -1,30 +1,25 @@
 import { Fragment, useState } from "react"
 
 const Details = ({ bookDetails, userGrade }) => {
-    const [notesArray, setNotesArray] = useState([])
 
+    const [notesArray, setNotesArray] = useState([])
+    const [print, setPrint] = useState(false)
     // todo: book id , user note, grade, email
 
-    // function saveUserNotes(e) {
-    //     let userNote = e.target.value;
-    //     let history = [userNote, ...notesArray];
-    //     history.splice(1, history.length)
-    //     setNotesArray(history)
-
-    //     localStorage.setItem("history", notesArray + history);
-
-    // }
+    function saveUserNotes(e) {
+        console.log(e);
+    }
 
     return (<Fragment>
         <h1>details page</h1>
         <h3>{bookDetails.volumeInfo.title}</h3>
         <p>{bookDetails.volumeInfo.authors}</p>
-        {/* <img src={bookDetails.imgUrl} /> */}
+        <img src={bookDetails.volumeInfo.imageLinks?.thumbnail || ""} />
         <p >{bookDetails.volumeInfo.description}</p>
         <textarea placeholder="Notes" onChange={(e) => { bookDetails.volumeInfo.note = saveUserNotes(e) }} /><br></br>
-        <p>{bookDetails.volumeInfo.note}        </p>
-        <p>local storage:{localStorage.getItem("history")}</p>
-        {notesArray}
+        <button onClick={() => setPrint(true)}>save note</button>
+        {print ? notesArray : ""}
+
     </Fragment>)
 }
 

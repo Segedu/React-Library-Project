@@ -38,6 +38,15 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
         }
     }
 
+    // function shortDescription(description) {
+    //     let readMore = "..."
+    //     if (description.length > 100) {
+    //         return description.slice(0, 100) + " " + readMore;
+    //     } else {
+    //         return description
+    //     }
+    // }
+
     const elements = books.map((book, id) =>
         <article key={id}>
             <h3>{book.volumeInfo.title}</h3>
