@@ -20,7 +20,6 @@ function App({ bookRate }) {
   return (
     <BrowserRouter>
       <div className="App">
-        {/* {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""} */}
         {!auth ? (
           <>
             <Link to="/">The Library</Link><span> </span>
