@@ -8,7 +8,7 @@ import './Search.css';
 const Search = ({ setBooks, books, readingList, setReadingList }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
     const [flag, setFlag] = useState(false);
-    const url = `https://www.googleapis.com/books/v1/volumes?q=philosophy&key=AIzaSyD9B_Kbyleik18VaRFdiQ8RSLH_UOxMIH4&maxResults=40`
+    const url = `https://www.googleapis.com/books/v1/volumes?q=MarcusAurelius&key=AIzaSyD9B_Kbyleik18VaRFdiQ8RSLH_UOxMIH4&maxResults=40`
 
     useEffect(getData, [url])
 

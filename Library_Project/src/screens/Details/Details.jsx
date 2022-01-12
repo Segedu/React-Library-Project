@@ -14,14 +14,14 @@ const Details = ({ bookDetails, userGrade }) => {
         let obj = { id: id++, text: todo }
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
-        console.log({ notes });
-        console.log( notesArray);
-        return notesArray
-
+        // return notesArray
     }
 
-    let elements = notes.map((note) => 
-    <p key={note.id}>{note.text}</p>)
+    let elements = notes.map((note) =>
+        <ul>
+            <li key={note.id}>{note.text}</li>
+        </ul>
+    )
 
     return (<Fragment>
         <h1>details page</h1>
@@ -31,9 +31,9 @@ const Details = ({ bookDetails, userGrade }) => {
         <p >{bookDetails.volumeInfo.description}</p>
         <textarea placeholder="Notes" onChange={(e) => { bookDetails.volumeInfo.note = addTaskInputHandler(e) }} /><br></br>
         <h3>{bookDetails.volumeInfo.note}</h3>
-        <section>{notes ? elements : bookDetails}</section>
         <button onClick={() => AddNote(newNoteName)}>save note</button>
-        <section>{newNoteName ? "" :bookDetails}</section>
+        <section>{notes ? elements : bookDetails}</section>
+        <section>{newNoteName ? "" : bookDetails}</section>
 
 
     </Fragment>)
