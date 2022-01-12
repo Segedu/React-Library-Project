@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from "react";
-// import Details from "../Details/Details";
 import { BiBookBookmark, BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
@@ -29,8 +28,6 @@ const ReadingList =
             setBookDetails(foundBook);
             setIsRedirect(true);
         }
-
-
 
         function shortDescription(description) {
             let readMore = "...";
