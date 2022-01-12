@@ -1,12 +1,15 @@
 import { Fragment, useState } from 'react';
 import './CompletedList.css';
+import { Link, Redirect } from "react-router-dom";
 import { BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 
 const CompletedList =
     ({ setCompletedList, completedList, setBookDetails }) => {
-        const [bookRate, setBookRate] = useState("")
+        const [bookRate, setBookRate] = useState("");
+        const [isRedirect, setIsRedirect] = useState(false);
+
         const removeFromList = (bookId, listName, setFunction) => {
             const removeArray = [...listName].filter(book => book.id !== bookId);
             setFunction(removeArray);
@@ -14,7 +17,8 @@ const CompletedList =
 
         const showBookDetails = (bookId) => {
             const foundBook = completedList.find(book => book.id === bookId);
-            setBookDetails(foundBook)
+            setBookDetails(foundBook);
+            setIsRedirect(true);
         }
         const isSelected = (value) => bookRate === value;
 
@@ -66,10 +70,9 @@ const CompletedList =
         return (
             <Fragment>
                 <h1>Completed List page</h1>
-                <section>
-                    {elements}
-                </section>
+                <section>{elements} </section>
                 <h1>{bookRate}</h1>
+                {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)
     }
 
