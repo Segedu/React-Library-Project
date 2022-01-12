@@ -20,7 +20,7 @@ function App({ bookRate }) {
   return (
     <BrowserRouter>
       <div className="App">
-        {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""}
+        {/* {bookDetails ? <Details bookDetails={bookDetails} bookRate={bookRate} /> : ""} */}
         {!auth ? (
           <>
             <Link to="/">The Library</Link><span> </span>
@@ -36,16 +36,18 @@ function App({ bookRate }) {
         {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
 
         <Switch>
-          <Route exact path="/" render={() => <HomePage setAuth={setAuth} />} />
-          <Route exact path="/Login" render={() => <Login setAuth={setAuth} />} />
-          <Route exact path="/Register" render={() => <Register setAuth={setAuth} />} />
-          <Route exact path="/Search" render={() => <Search setBooks={setBooks} books={books}
+          <Route exact path="/" component={() => <HomePage setAuth={setAuth} />} />
+          <Route exact path="/Login" component={() => <Login setAuth={setAuth} />} />
+          <Route exact path="/Register" component={() => <Register setAuth={setAuth} />} />
+          <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books}
             setReadingList={setReadingList}
             readingList={readingList} />} />
-          <Route exact path="/CompletedList" render={() => <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} />} />
-          <Route exact path="/ReadingList" render={() =>
-            <ReadingList setReadingList={setReadingList} readingList={readingList} setCompletedList={setCompletedList} setBookDetails={setBookDetails}
-              completedList={completedList} />} />
+          <Route exact path="/CompletedList" component={() =>
+            <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} />} />
+          <Route exact path="/ReadingList" component={() =>
+            <ReadingList setReadingList={setReadingList} readingList={readingList}
+              setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
+          <Route exact path="/Details" component={() => <Details bookDetails={bookDetails} bookRate={bookRate} />} />
         </Switch>
       </div>
     </BrowserRouter >

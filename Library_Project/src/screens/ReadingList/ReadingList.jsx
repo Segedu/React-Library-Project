@@ -4,34 +4,40 @@ import { BiBookBookmark, BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import '../ReadingList/ReadingList.css';
+import { Link, Redirect } from "react-router-dom";
 
 const ReadingList =
     ({ setReadingList, readingList,
         setCompletedList, completedList, setBookDetails }) => {
+
+        const [isRedirect, setIsRedirect] = useState(false);
+
         const moveToCompleted = (bookId, listName, secondListName, setFunction, secondFunc) => {
             const foundBook = readingList.find(book => book.id == bookId);
-            const array = [foundBook, ...listName]
+            const array = [foundBook, ...listName];
             setFunction(array);
-            removeFromList(bookId, secondListName, secondFunc)
+            removeFromList(bookId, secondListName, secondFunc);
         }
 
         const removeFromList = (bookId, listName, setFunction) => {
-            const removeArray = [...listName].filter(book => book.id !== bookId)
-            setFunction(removeArray)
+            const removeArray = [...listName].filter(book => book.id !== bookId);
+            setFunction(removeArray);
         }
 
         const showBookDetails = (bookId) => {
-            const foundBook = readingList.find(book => book.id === bookId)
-            setBookDetails(foundBook)
-
+            const foundBook = readingList.find(book => book.id === bookId);
+            setBookDetails(foundBook);
+            setIsRedirect(true);
         }
 
+
+
         function shortDescription(description) {
-            let readMore = "..."
+            let readMore = "...";
             if (description.length > 100) {
                 return description.slice(0, 100) + " " + readMore;
             } else {
-                return description
+                return description;
             }
         }
 
@@ -53,6 +59,7 @@ const ReadingList =
             <Fragment>
                 <h1>Reading List page</h1>
                 <section>{elements}</section>
+                {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)
     }
 
