@@ -15,17 +15,17 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
     function getData() {
         axios.get(url)
             .then(response => {
-                setBooks(response.data.items)
+                setBooks(response.data.items);
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
     }
 
     function searchBook(inputData) {
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${inputData}+insubject:keyes&key=AIzaSyD9B_Kbyleik18VaRFdiQ8RSLH_UOxMIH4&maxResults=40`)
             .then(response => {
-                setSearchBooksArray(response.data.items)
+                setSearchBooksArray(response.data.items);
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
     }
 
     const addToList = (bookId, category, setFunction) => {
@@ -33,19 +33,10 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
         if (category.indexOf(foundBook) > -1) {
             alert("already in the reading list")
         } else {
-            const updatedBooks = [foundBook, ...category]
+            const updatedBooks = [foundBook, ...category];
             setFunction(updatedBooks);
         }
     }
-
-    // function shortDescription(description) {
-    //     let readMore = "..."
-    //     if (description.length > 100) {
-    //         return description.slice(0, 100) + " " + readMore;
-    //     } else {
-    //         return description
-    //     }
-    // }
 
     const elements = books.map((book, id) =>
         <article key={id}>

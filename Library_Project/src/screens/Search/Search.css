@@ -13,10 +13,10 @@ img{
 }
 .Description{
     display: block;
-   margin-left: 10%;
+   /* margin-left: 10%;
     width: 80%;
     height:20vh;
-  overflow: hidden;
+  overflow: hidden; */
 }
 button{
     border-radius: 50%;
