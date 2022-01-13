@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import axios from "axios";
 import { BrowserRouter, Switch, Route, Link, Router, Redirect, } from "react-router-dom";
 import HomePage from './screens/HomePage/HomePage';
 import Login from './screens/Login/Login';
@@ -16,6 +17,18 @@ function App({ bookRate }) {
   const [completedList, setCompletedList] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const [bookDetails, setBookDetails] = useState("");
+
+  const url = "/data/data.js";
+
+  useEffect(getData, []);
+
+  function getData() {
+    axios.get(url)
+      .then(response => {
+        const data = JSON.parse(JSON.stringify(response.data))
+        setBooks(data);
+      }).catch(error => console.log(error));
+  }
 
   return (
     <BrowserRouter>
@@ -51,7 +64,6 @@ function App({ bookRate }) {
       </div>
     </BrowserRouter >
   )
-
 }
 
 export default App;

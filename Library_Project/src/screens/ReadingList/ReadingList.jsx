@@ -30,19 +30,18 @@ const ReadingList =
         }
 
         function shortDescription(description) {
-            let readMore = "...";
             if (description.length > 100) {
-                return description.slice(0, 100) + " " + readMore;
+                return description.slice(0, 100) + "... "
             } else {
                 return description;
             }
         }
 
         const elements = readingList.map((book) =>
-            <article key={book.id}>
+            <article onClick={() => { showBookDetails(book.id) }} key={book.id}>
                 <h3>{book.volumeInfo.title}</h3>
                 <p>{book.volumeInfo.authors}</p>
-                <img onClick={() => { showBookDetails(book.id) }} src={book.volumeInfo.imageLinks?.thumbnail || ""} />
+                <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
                 <p className="Description" >{shortDescription(book.volumeInfo.description)}</p>
                 <Tooltip title="Mark As Read" placement="top">
                     <Button> <BiBookBookmark fontSize="x-large" onClick={() => moveToCompleted(book.id, completedList, readingList, setCompletedList, setReadingList)} /></Button>
