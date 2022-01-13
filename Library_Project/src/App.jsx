@@ -17,6 +17,7 @@ function App({ bookRate }) {
   const [completedList, setCompletedList] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const [bookDetails, setBookDetails] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
 
   const url = "/data/data.js";
 
@@ -32,6 +33,7 @@ function App({ bookRate }) {
 
   return (
     <BrowserRouter>
+      {showDialog ? <Login setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       <div className="App">
         {!auth ? (
           <>
@@ -48,8 +50,8 @@ function App({ bookRate }) {
         {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
 
         <Switch>
-          <Route exact path="/" component={() => <HomePage setAuth={setAuth} />} />
-          <Route exact path="/Login" component={() => <Login setAuth={setAuth} />} />
+          <Route exact path="/" component={() => <HomePage setShowDialog={setShowDialog} setAuth={setAuth} />} />
+          <Route exact path="/Login" component={() => <Login setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
           <Route exact path="/Register" component={() => <Register setAuth={setAuth} />} />
           <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books}
             setReadingList={setReadingList}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_KEY } from '../../../logic/key'
+import { API_KEY } from '../../../logic/key';
+import '../Login/Login.css';
 
 const Register = ({ setAuth }) => {
     const [userEmail, setUserEmail] = useState("");
@@ -37,21 +38,24 @@ const Register = ({ setAuth }) => {
     }
 
     return (
-        <div className="Register">
-            <h3>Register Here</h3>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                if (password === confirmPassword) {
-                    register()
-                } else {
-                    alert("incorrect password")
-                }
-            }}>
-                <input type="email" onChange={(e) => { emailValidation(e) }} placeholder="Enter Email" /><br></br>
-                <input type="password" onChange={(e) => { passwordValidation(e, setPassword) }} placeholder="Enter Password" /><br></br>
-                <input type="password" onChange={(e) => { passwordValidation(e, setConfirmPassword) }} placeholder="Confirm Password" /><br></br>
-                <input type="submit" value="Register" />
-            </form>
+        <div className="Form">
+            <dialog open>
+                <button id="close">X</button>
+                <h3>Register Here</h3>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    if (password === confirmPassword) {
+                        register()
+                    } else {
+                        alert("incorrect password")
+                    }
+                }}>
+                    <input type="email" onChange={(e) => { emailValidation(e) }} placeholder="Enter Email" /><br></br>
+                    <input type="password" onChange={(e) => { passwordValidation(e, setPassword) }} placeholder="Enter Password" /><br></br>
+                    <input type="password" onChange={(e) => { passwordValidation(e, setConfirmPassword) }} placeholder="Confirm Password" /><br></br>
+                    <input type="submit" value="Register" />
+                </form>
+            </dialog>
             <h3>{errorFromServer ? "Error from server during Registration" : ""}</h3>
         </div>
     )
