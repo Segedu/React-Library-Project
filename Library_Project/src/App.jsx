@@ -9,6 +9,7 @@ import Search from './screens/Search/Search';
 import CompletedList from './screens/CompletedList/CompletedList';
 import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import './App.css';
 
 function App() {
@@ -43,14 +44,38 @@ function App() {
       <div className="App">
         {!auth ? (
           <>
-            <Link to="/">The Library</Link><span> </span>
-            <Link to="/Search">Discover</Link><span> </span>
+            <Dropdown className="d-inline mx-2">
+              <Dropdown.Toggle id="dropdown-autoclose-true">
+                Menu
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/"><Link to="/Search">The Library</Link></Dropdown.Item>
+                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Other</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </>
         ) : <Redirect to="/Search" />}
         {auth ? (<>
-          <Link to="/Search">Discover</Link><span> </span>
-          <Link to="/CompletedList">Completed List</Link><span> </span>
-          <Link to="/ReadingList">Reading List</Link><span> </span>
+          <Dropdown className="d-inline mx-2">
+            <Dropdown.Toggle id="dropdown-autoclose-true">
+              Menu
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+              <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
+              <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          {/* display: flex;
+    align-content: stretch;
+    align-items: center; */}
+
+          {/* <Link to="/Search">Discover</Link><span> </span> */}
+          {/* <Link to="/CompletedList">Completed List</Link><span> </span> */}
+          {/* <Link to="/ReadingList">Reading List</Link><span> </span> */}
           <Redirect to="/Search" />
         </>
         ) : <Redirect to="/Login" />}

@@ -1,6 +1,6 @@
 import './HomePage.css';
 
-const HomePage = ({ setAuth, setShowDialog, setShowRegisterDialog }) => {
+const HomePage = ({ setShowDialog, setShowRegisterDialog }) => {
     return (
         <div>
             <h2>Library</h2>

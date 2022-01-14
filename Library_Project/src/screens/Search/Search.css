@@ -1,5 +1,6 @@
 *{
 text-decoration: none;
+/* text-align: end; */
 }
 section{
     display: grid;
@@ -8,7 +9,6 @@ section{
     gap: 15px;    
 }
 article{
-    background-color: black;
     width: 100%;
     box-shadow: 4px 4px 4px rgb(206, 198, 198);
 }
@@ -18,12 +18,11 @@ img{
     height: 50vh;
 }
 .Description{
-    /* display: block; */
     text-align: center;
-   margin-left: 10%;
+    margin-left: 10%;
     width: 80%;
     height:10vh;
-  overflow: hidden;
+    overflow: hidden;
 }
 button{
 
