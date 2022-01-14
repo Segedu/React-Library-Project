@@ -25,9 +25,14 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         window.localStorage.setItem("Grades", JSON.stringify(bookRate));
     };
 
-    let elements = notes.map(note =>
+
+
+    // }
+
+    const elements = notes.map(note => {
         <p key={note.text}>{note.text}</p>
-    )
+    })
+
 
     return (<Fragment>
         <h1>details page</h1>
@@ -45,7 +50,9 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             name="star"
             value="☆"
             checked={isSelected("☆")}
-            onChange={handleRadioClick}
+            onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
+
+        // onChange={handleRadioClick}
         />  <input
             className="rateBook"
             type="radio"
@@ -86,7 +93,7 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         /><br></br>
 
         {/* <h3>Book Rate:{bookRate}</h3> */}
-        <article>{notes ? elements : bookDetails}</article>
+        {/* <article>{notes ? elements : bookDetails}</article> */}
         <article>{newNoteName ? "" : bookDetails}</article>
 
 

@@ -37,7 +37,7 @@ function App() {
   return (
     <BrowserRouter>
 
-      {showDialog ? <Login setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
+      {showDialog ? <Login setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
 
       <div className="App">
@@ -45,9 +45,6 @@ function App() {
           <>
             <Link to="/">The Library</Link><span> </span>
             <Link to="/Search">Discover</Link><span> </span>
-
-            {/* <Link to="/Login">Login</Link><span> </span> */}
-            {/* <Link to="/Register">Register</Link><span></span> */}
           </>
         ) : <Redirect to="/Search" />}
         {auth ? (<>
