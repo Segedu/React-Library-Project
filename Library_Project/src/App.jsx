@@ -10,7 +10,9 @@ import CompletedList from './screens/CompletedList/CompletedList';
 import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { BiMenu } from "react-icons/bi";
 import './App.css';
+
 
 function App() {
   const [auth, setAuth] = useState(null);
@@ -38,6 +40,7 @@ function App() {
   return (
     <BrowserRouter>
 
+      {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
       {showDialog ? <Login setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
 
@@ -46,12 +49,12 @@ function App() {
           <>
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle id="dropdown-autoclose-true">
-                Menu
+                <BiMenu fontSize="x-large" />
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="/"><Link to="/Search">The Library</Link></Dropdown.Item>
+                <Dropdown.Item href="/"><Link to="/">Home</Link></Dropdown.Item>
                 <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Other</Dropdown.Item>
+                {/* <Dropdown.Item href="#/action-3">Other</Dropdown.Item> */}
               </Dropdown.Menu>
             </Dropdown>
           </>
@@ -59,7 +62,7 @@ function App() {
         {auth ? (<>
           <Dropdown className="d-inline mx-2">
             <Dropdown.Toggle id="dropdown-autoclose-true">
-              Menu
+              <BiMenu fontSize="x-large" />
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -79,7 +82,6 @@ function App() {
           <Redirect to="/Search" />
         </>
         ) : <Redirect to="/Login" />}
-        {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />

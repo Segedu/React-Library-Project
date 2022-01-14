@@ -1,13 +1,12 @@
 .App {
   text-align:center;
 }
-.d-inline mx-2{
-  /* display: flex; */
-  /* flex-direction: column; */
-}
 .dropdown-item{
   display: flex;  
 }
-.dropdown-toggle btn btn-success{
-  align-items: flex-end;
+.dropdown-toggle{
+  display: flex;
+  
+  /* background-color: yellow; */
 }
+
