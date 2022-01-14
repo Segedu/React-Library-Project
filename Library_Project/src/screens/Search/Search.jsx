@@ -6,17 +6,26 @@ import './Search.css';
 
 const Search = ({ setBooks, books, readingList, setReadingList }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
-    const [flag, setFlag] = useState(false);
+    const [search, setSearch] = useState("");
 
-    // const url = `https://www.googleapis.com/books/v1/volumes?q=MarcusAurelius&key=AIzaSyD9B_Kbyleik18VaRFdiQ8RSLH_UOxMIH4&maxResults=40`
+    let tempBook = books;
+    function searchStringInAuthorTitleDescription(userInput) {
+        tempBook.forEach(element => {
+            element.volumeInfo.title.toLowerCase();
+            element.volumeInfo.description?.toLowerCase();
+            element.volumeInfo.authors[0].toLowerCase();
+            if (tempBook.indexOf(userInput > -1)) {
+                return tempBook[userInput]
+            }
+        })
 
-
-    function searchBook(inputData) {
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${inputData}+insubject:keyes&key=AIzaSyD9B_Kbyleik18VaRFdiQ8RSLH_UOxMIH4&maxResults=40`)
-            .then(response => {
-                setSearchBooksArray(response.data.items);
-            })
-            .catch(error => console.error(error));
+        const titleFilter = tempBook.filter(book => book.volumeInfo.title.includes(userInput));
+        const descriptionFilter = tempBook.filter(book => book.volumeInfo.description?.includes(userInput));
+        const authorFilter = tempBook.filter(book => book.volumeInfo.authors?.includes(userInput));
+        let searchesResultArray = titleFilter.concat(authorFilter).concat(descriptionFilter);
+        let uniqueArray = [...new Set(searchesResultArray)];
+        let shortenArray = uniqueArray.splice(0, 10);
+        setSearchBooksArray(shortenArray)
     }
 
     const addToList = (bookId, category, setFunction) => {
@@ -52,23 +61,19 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
             <Tooltip title="Add To Read List" placement="top">
                 <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
             </Tooltip>
-        </article >)
+        </article >);
+
     return (
         <Fragment>
             <h1>Discover</h1>
-            <form onSubmit={(e) => {
-                e.preventDefault()
-                const searchInput = (e.target[0].value)
-                searchBook(searchInput);
-                setFlag(true);
-            }}>
-                <input type="text" onChange={(e) => {
-                    e.target.value
-                }} placeholder="Search Book..." />
-                <input type="submit" value="Search" />
-            </form>
-            <section>{searchBooksArray ? searchElements : generalBooksGallery}</section>
-            <section>{flag ? "" : generalBooksGallery}</section>
+            <input type="text" onChange={(e) => {
+                e.target.value
+                const searchInput = (e.target.value);
+                setSearch(searchInput)
+                searchStringInAuthorTitleDescription(searchInput.toLowerCase());
+            }} placeholder="Search Book..." />
+            {/* <section>{flag ? searchElements : generalBooksGallery}</section> */}
+            <section>{search ? searchElements : generalBooksGallery}</section>
         </Fragment >)
 }
 

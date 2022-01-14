@@ -35,10 +35,10 @@ function App({ bookRate }) {
 
   return (
     <BrowserRouter>
-     
+
       {showDialog ? <Login setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
-     
+
       <div className="App">
         {!auth ? (
           <>
@@ -47,11 +47,13 @@ function App({ bookRate }) {
 
             {/* <Link to="/Login">Login</Link><span> </span> */}
             {/* <Link to="/Register">Register</Link><span></span> */}
-          </>) : <Redirect to="/Search" />}
+          </>
+        ) : <Redirect to="/Search" />}
         {auth ? (<>
           <Link to="/Search">Discover</Link><span> </span>
           <Link to="/CompletedList">Completed List</Link><span> </span>
           <Link to="/ReadingList">Reading List</Link><span> </span>
+          {/* {setShowDialog(false)} */}
         </>
         ) : <Redirect to="/Login" />}
         {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
