@@ -61,16 +61,11 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
-          <Route exact path="/Login" component={() => <Login setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
+          <Route exact path="/Login" component={() => <Login setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
           <Route exact path="/Register" component={() => <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} />} />
-          <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books}
-            setReadingList={setReadingList}
-            readingList={readingList} />} />
-          <Route exact path="/CompletedList" component={() =>
-            <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} setBookRate={setBookRate} />} />
-          <Route exact path="/ReadingList" component={() =>
-            <ReadingList setReadingList={setReadingList} readingList={readingList}
-              setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
+          <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books} setReadingList={setReadingList} readingList={readingList} />} />
+          <Route exact path="/CompletedList" component={() => <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} setBookRate={setBookRate} />} />
+          <Route exact path="/ReadingList" component={() => <ReadingList setReadingList={setReadingList} readingList={readingList} setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
           <Route exact path="/Details" component={() => <Details notes={notes} setNotes={setNotes} bookDetails={bookDetails} bookRate={bookRate} setBookRate={setBookRate} />} />
         </Switch>
       </div>

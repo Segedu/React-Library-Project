@@ -6,7 +6,7 @@ import { API_KEY } from '../../../logic/key';
 import './Login.css';
 
 
-const Login = ({ setAuth, showDialog, setShowDialog, setNotes }) => {
+const Login = ({ setAuth, showDialog, setShowDialog, setNotes, setBookRate }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorFromServer, setErrorFromServer] = useState(false);
@@ -37,8 +37,10 @@ const Login = ({ setAuth, showDialog, setShowDialog, setNotes }) => {
         if (LOCAL_STORAGE_AUTH_KEY !== null) {
             let data = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY);
             let notes = localStorage.getItem("Notes");
-            setNotes(JSON.parse(notes));
+            let grades = localStorage.getItem("Grades");
             setAuth(JSON.parse(data));
+            setNotes(JSON.parse(notes));
+            setBookRate(JSON.parse(grades));
         }
     }
 

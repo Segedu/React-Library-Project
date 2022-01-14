@@ -15,13 +15,15 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         let obj = { text: todo }
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
-        let saveBook = localStorage.setItem("Notes", JSON.stringify(notesArray));
-        console.log(saveBook);
+        window.localStorage.setItem("Notes", JSON.stringify(notesArray));
     }
 
     const isSelected = (value) => bookRate === value;
 
-    const handleRadioClick = (e) => { setBookRate(e.currentTarget.value) };
+    const handleRadioClick = (e) => {
+        setBookRate(e.currentTarget.value)
+        window.localStorage.setItem("Grades", JSON.stringify(bookRate));
+    };
 
     let elements = notes.map(note =>
         <p key={note.text}>{note.text}</p>
