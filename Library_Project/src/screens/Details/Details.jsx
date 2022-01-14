@@ -8,17 +8,20 @@ const Details = ({ bookDetails, bookRate, setBookRate }) => {
 
     // todo: book id , user note, grade, email
 
-    let id = 0;
+    // let id = 0;
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) };
 
     const AddNote = (todo) => {
-        let obj = { id: id++, text: todo }
+        // let obj = { id: id++, text: todo }
+        let obj = { text: todo }
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
+        let saveBook = localStorage.setItem("NOTES", JSON.stringify(notesArray));
+        console.log(saveBook);
     }
 
     let elements = notes.map(note =>
-        <p key={note.id}>{note.text} </p>
+        <p key={note.text}>{note.text}</p>
     )
     const isSelected = (value) => bookRate === value;
 

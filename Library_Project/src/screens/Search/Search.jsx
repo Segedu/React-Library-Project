@@ -33,8 +33,11 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
         if (category.indexOf(foundBook) > -1) {
             alert("already in the reading list")
         } else {
-            const updatedBooks = [foundBook, ...category]
-            setFunction(updatedBooks)
+            const updatedBooks = [foundBook, ...category];
+            setFunction(updatedBooks);
+            // let saveBook = localStorage.setItem("READLIST", [foundBook.id]);
+
+            // console.log(saveBook);
         }
     }
 
