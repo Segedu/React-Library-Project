@@ -3,7 +3,7 @@ import axios from "axios";
 import { API_KEY } from '../../../logic/key';
 import '../Login/Login.css';
 
-const Register = ({ setAuth }) => {
+const Register = ({ setAuth, showRegisterDialog, setShowRegisterDialog }) => {
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState()
@@ -39,8 +39,8 @@ const Register = ({ setAuth }) => {
 
     return (
         <div className="Form">
-            <dialog open>
-                <button id="close">X</button>
+            <dialog open={showRegisterDialog ? 'open' : 'close'}>
+                <button onClick={() => { setShowRegisterDialog(false) }}>X</button>
                 <h3>Register Here</h3>
                 <form onSubmit={(e) => {
                     e.preventDefault();

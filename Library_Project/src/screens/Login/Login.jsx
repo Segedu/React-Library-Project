@@ -10,7 +10,7 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorFromServer, setErrorFromServer] = useState(false);
-    const [isRedirect, setIsRedirect] = useState(false);
+    // const [isRedirect, setIsRedirect] = useState(false);
 
     const LOCAL_STORAGE_AUTH_KEY = "auth";
 
@@ -43,7 +43,7 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
 
     return (
         <div className="Form">
-            <dialog open={showDialog ? 'open' : false}>
+            <dialog open={showDialog ? 'open' : 'close'}>
                 <h3>Login Here</h3>
                 <button onClick={() => { setShowDialog(false) }}>X</button>
                 <form onSubmit={(e) => {
@@ -56,7 +56,7 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
                 </form>
             </dialog>
             <h3>{errorFromServer ? "Error from server during Login" : ""}</h3>
-            {isRedirect ? < Redirect to="/" /> : ""}
+            {/* {isRedirect ? < Redirect to="/" /> : ""} */}
 
         </div >)
 }
