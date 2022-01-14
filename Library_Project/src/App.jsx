@@ -22,7 +22,6 @@ function App() {
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
   const [notes, setNotes] = useState([]);
 
-
   const url = "/data/data.js";
 
   useEffect(getData, []);

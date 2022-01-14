@@ -6,7 +6,7 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
     const [newNoteName, setNewNoteName] = useState([]);
 
     // todo: book id , user note, grade, email
-
+    console.log({ notes });
     // let id = 0;
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) };
 
@@ -19,12 +19,13 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         console.log(saveBook);
     }
 
-    let elements = notes.map(note =>
-        <p key={note.text}>{note.text}</p>
-    )
     const isSelected = (value) => bookRate === value;
 
     const handleRadioClick = (e) => { setBookRate(e.currentTarget.value) };
+
+    let elements = notes.map(note =>
+        <p key={note.text}>{note.text}</p>
+    )
 
     return (<Fragment>
         <h1>details page</h1>
@@ -42,7 +43,7 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             name="star"
             value="☆"
             checked={isSelected("☆")}
-            onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
+            onChange={handleRadioClick}
         />  <input
             className="rateBook"
             type="radio"
@@ -50,6 +51,8 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             value="☆☆"
             checked={isSelected("☆☆")}
             onChange={handleRadioClick}
+
+        // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
         />  <input
             className="rateBook"
             type="radio"
@@ -57,6 +60,8 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             value="☆☆☆"
             checked={isSelected("☆☆☆")}
             onChange={handleRadioClick}
+
+        // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
         />  <input
             className="rateBook"
             type="radio"
@@ -64,6 +69,8 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             value="☆☆☆☆"
             checked={isSelected("☆☆☆☆")}
             onChange={handleRadioClick}
+
+        // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
         />
         <input
             className="rateBook"
@@ -71,6 +78,8 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             name="star"
             value="☆☆☆☆☆"
             checked={isSelected("☆☆☆☆☆")}
+            // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
+
             onChange={handleRadioClick}
         /><br></br>
 

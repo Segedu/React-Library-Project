@@ -36,7 +36,7 @@ const Login = ({ setAuth, showDialog, setShowDialog, setNotes }) => {
     function getLocalStorageData() {
         if (LOCAL_STORAGE_AUTH_KEY !== null) {
             let data = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY);
-            let notes = localStorage.getItem("NOTES");
+            let notes = localStorage.getItem("Notes");
             setNotes(JSON.parse(notes));
             setAuth(JSON.parse(data));
         }
