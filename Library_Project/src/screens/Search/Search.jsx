@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import './Search.css';
 
-const Search = ({ setBooks, books, readingList, setReadingList }) => {
+const Search = ({ books, readingList, setReadingList }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
     const [search, setSearch] = useState("");
 
@@ -35,8 +35,7 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
         } else {
             const updatedBooks = [foundBook, ...category];
             setFunction(updatedBooks);
-            // let saveBook = localStorage.setItem("READLIST", [foundBook.id]);
-
+            // let saveBook = localStorage.setItem("ReadingList", [foundBook.id]);
             // console.log(saveBook);
         }
     }
@@ -75,7 +74,6 @@ const Search = ({ setBooks, books, readingList, setReadingList }) => {
                 setSearch(searchInput)
                 searchStringInAuthorTitleDescription(searchInput.toLowerCase());
             }} placeholder="Search Book..." />
-            {/* <section>{flag ? searchElements : generalBooksGallery}</section> */}
             <section>{search ? searchElements : generalBooksGallery}</section>
         </Fragment >)
 }

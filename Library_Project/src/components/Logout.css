@@ -1,5 +1,6 @@
 .LogOutBtn{
-    background-color: rgb(40, 124, 173);
-    border-radius: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
     padding: 0.5%;
 }

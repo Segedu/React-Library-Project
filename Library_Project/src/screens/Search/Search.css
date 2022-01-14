@@ -8,9 +8,8 @@ section{
     gap: 15px;    
 }
 article{
-    background-color: rgba(91, 121, 204, 0.692);
+    background-color: black;
     width: 100%;
-   
     box-shadow: 4px 4px 4px rgb(206, 198, 198);
 }
 
@@ -27,6 +26,7 @@ img{
   overflow: hidden;
 }
 button{
+
     border:none;
     padding: 1.5%;
     margin: 1%;
