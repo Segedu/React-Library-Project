@@ -2,8 +2,7 @@ import { Fragment, useState } from "react"
 import ReadingList from "../ReadingList/ReadingList";
 import './Details.css';
 
-const Details = ({ bookDetails, bookRate, setBookRate }) => {
-    const [notes, setNotes] = useState([]);
+const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
     const [newNoteName, setNewNoteName] = useState([]);
 
     // todo: book id , user note, grade, email
@@ -16,7 +15,7 @@ const Details = ({ bookDetails, bookRate, setBookRate }) => {
         let obj = { text: todo }
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
-        let saveBook = localStorage.setItem("NOTES", JSON.stringify(notesArray));
+        let saveBook = localStorage.setItem("Notes", JSON.stringify(notesArray));
         console.log(saveBook);
     }
 

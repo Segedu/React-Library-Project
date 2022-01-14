@@ -18,9 +18,9 @@ function App() {
   const [readingList, setReadingList] = useState([]);
   const [bookDetails, setBookDetails] = useState("");
   const [bookRate, setBookRate] = useState("");
-
   const [showDialog, setShowDialog] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
+  const [notes, setNotes] = useState([]);
 
 
   const url = "/data/data.js";
@@ -38,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
 
-      {showDialog ? <Login setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
+      {showDialog ? <Login setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
 
       <div className="App">
@@ -62,7 +62,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
-          <Route exact path="/Login" component={() => <Login setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
+          <Route exact path="/Login" component={() => <Login setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
           <Route exact path="/Register" component={() => <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} />} />
           <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books}
             setReadingList={setReadingList}
@@ -72,7 +72,7 @@ function App() {
           <Route exact path="/ReadingList" component={() =>
             <ReadingList setReadingList={setReadingList} readingList={readingList}
               setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
-          <Route exact path="/Details" component={() => <Details bookDetails={bookDetails} bookRate={bookRate} setBookRate={setBookRate} />} />
+          <Route exact path="/Details" component={() => <Details notes={notes} setNotes={setNotes} bookDetails={bookDetails} bookRate={bookRate} setBookRate={setBookRate} />} />
         </Switch>
       </div>
     </BrowserRouter >

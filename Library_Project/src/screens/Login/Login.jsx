@@ -6,7 +6,7 @@ import { API_KEY } from '../../../logic/key';
 import './Login.css';
 
 
-const Login = ({ setAuth, showDialog, setShowDialog }) => {
+const Login = ({ setAuth, showDialog, setShowDialog, setNotes }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorFromServer, setErrorFromServer] = useState(false);
@@ -36,6 +36,8 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
     function getLocalStorageData() {
         if (LOCAL_STORAGE_AUTH_KEY !== null) {
             let data = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY);
+            let notes = localStorage.getItem("NOTES");
+            setNotes(JSON.parse(notes));
             setAuth(JSON.parse(data));
         }
     }
@@ -48,7 +50,7 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
                 <form onSubmit={(e) => {
                     e.preventDefault(),
                         login()
-                        setShowDialog(false)
+                    setShowDialog(false)
                 }}>
                     <input type="email" placeholder="Enter Your Email" onChange={(e) => { setEmail(e.target.value) }} /><br></br>
                     <input type="password" placeholder="Enter Your Password" onChange={(e) => { setPassword(e.target.value) }} /><br></br>
