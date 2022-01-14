@@ -1,7 +1,7 @@
 body{
-
-  background-image: url("https://cdn.pixabay.com/photo/2020/07/23/17/54/mountain-5431950__340.png");
-background-size: cover;
+background-color: black;
+/* background-image: url("https://i.pinimg.com/236x/86/60/20/86602004f8bc319a432951956376e6ae.jpg"); */
+/* background-size: cover; */
 }
 .App {
   text-align:center;

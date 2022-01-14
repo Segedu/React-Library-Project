@@ -41,7 +41,7 @@
             },
             "imageLinks": {
                 "smallThumbnail": "http://books.google.com/books/content?id=GR5KDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-                "thumbnail": "http://books.google.com/books/content?id=GR5KDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                "thumbnail": "https://i.pinimg.com/236x/d6/0c/3e/d60c3ee942cf8ad786867ffea7e39f1d.jpg"
             },
             "language": "en",
             "previewLink": "http://books.google.com/books?id=GR5KDgAAQBAJ&printsec=frontcover&dq=MarcusAurelius&hl=&cd=1&source=gbs_api",
@@ -117,7 +117,7 @@
             },
             "imageLinks": {
                 "smallThumbnail": "http://books.google.com/books/content?id=1ZElEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-                "thumbnail": "http://books.google.com/books/content?id=1ZElEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                "thumbnail": "https://i.pinimg.com/236x/2c/03/f1/2c03f132ea1afae4a4c13e2962bad61a.jpg"
             },
             "language": "en",
             "previewLink": "http://books.google.com/books?id=1ZElEAAAQBAJ&printsec=frontcover&dq=MarcusAurelius&hl=&cd=2&source=gbs_api",
@@ -268,7 +268,7 @@
             "contentVersion": "0.0.2.0.preview.3",
             "imageLinks": {
                 "smallThumbnail": "http://books.google.com/books/content?id=AlXwLh0TA1wC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-                "thumbnail": "http://books.google.com/books/content?id=AlXwLh0TA1wC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                "thumbnail": "https://i.pinimg.com/236x/fb/78/0c/fb780c4c2b99a97c44d679053360b780.jpg"
             },
             "language": "en",
             "previewLink": "http://books.google.com/books?id=AlXwLh0TA1wC&printsec=frontcover&dq=MarcusAurelius&hl=&cd=4&source=gbs_api",

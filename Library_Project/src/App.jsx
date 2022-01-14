@@ -71,17 +71,9 @@ function App() {
               <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
-          {/* display: flex;
-    align-content: stretch;
-    align-items: center; */}
-
-          {/* <Link to="/Search">Discover</Link><span> </span> */}
-          {/* <Link to="/CompletedList">Completed List</Link><span> </span> */}
-          {/* <Link to="/ReadingList">Reading List</Link><span> </span> */}
           <Redirect to="/Search" />
         </>
-        ) : <Redirect to="/Login" />}
+        ) : <Redirect to="/" />}
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
