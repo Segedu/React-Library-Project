@@ -42,13 +42,13 @@ const Search = ({ books, readingList, setReadingList }) => {
 
     const elements = books.map((book) =>
         <article key={book.id}>
-            <Tooltip title="Add To Read List" placement="top">
-                <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
-            </Tooltip>
-            <h3>{book.volumeInfo.title}</h3>
-            <p>{book.volumeInfo.authors}</p>
             <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
+            <h2>{book.volumeInfo.title}</h2>
+            <p>{book.volumeInfo.authors}</p>
             <p className="Description">{book.volumeInfo.description}</p>
+            <Tooltip title="Add To Read List" placement="top">
+                <Button> <BiBookAdd fontSize="xx-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
+            </Tooltip>
 
         </article>);
 
@@ -56,9 +56,9 @@ const Search = ({ books, readingList, setReadingList }) => {
 
     const searchElements = searchBooksArray.map((book, id) =>
         <article key={id}>
-            <h3>{book.volumeInfo.title}</h3>
-            <p>{book.volumeInfo.authors}</p>
             <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
+            <h2>{book.volumeInfo.title}</h2>
+            <p>{book.volumeInfo.authors}</p>
             <p className="Description" >{book.volumeInfo.description}</p>
             <Tooltip title="Add To Read List" placement="top">
                 <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
