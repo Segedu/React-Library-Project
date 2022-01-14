@@ -46,6 +46,7 @@ const Register = ({ setAuth, showRegisterDialog, setShowRegisterDialog }) => {
                     e.preventDefault();
                     if (password === confirmPassword) {
                         register()
+                        setShowRegisterDialog(false)
                     } else {
                         alert("incorrect password")
                     }
