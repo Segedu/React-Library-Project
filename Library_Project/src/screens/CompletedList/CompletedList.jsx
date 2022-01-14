@@ -4,11 +4,15 @@ import { Link, Redirect } from "react-router-dom";
 import { BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
+import '../Details/Details.css';
 
 const CompletedList =
-    ({ setCompletedList, completedList, setBookDetails }) => {
-        const [bookRate, setBookRate] = useState("");
+    ({ setCompletedList, completedList, bookRate, setBookRate, setBookDetails }) => {
         const [isRedirect, setIsRedirect] = useState(false);
+
+        const isSelected = (value) => bookRate === value;
+
+        const handleRadioClick = (e) => { setBookRate(e.currentTarget.value) };
 
         const removeFromList = (bookId, listName, setFunction) => {
             const removeArray = [...listName].filter(book => book.id !== bookId);
@@ -20,9 +24,6 @@ const CompletedList =
             setBookDetails(foundBook);
             setIsRedirect(true);
         }
-        const isSelected = (value) => bookRate === value;
-
-        const handleRadioClick = (e) => setBookRate(e.currentTarget.value);
 
         const elements = completedList.map((completed, id) =>
             <article key={id}>
@@ -31,35 +32,40 @@ const CompletedList =
                 <img onClick={() => { showBookDetails(completed.id) }} src={completed.volumeInfo.imageLinks?.thumbnail || ""} />
                 <p className="Description">{completed.volumeInfo.description}</p>
                 <input
+                    className="rateBook"
                     type="radio"
                     name="star"
-                    value="oneStar"
-                    checked={isSelected("oneStar")}
+                    value="☆"
+                    checked={isSelected("☆")}
+                    onChange={(e) => { completed.volumeInfo.bookRate = handleRadioClick(e) }}
+                />  <input
+                    className="rateBook"
+                    type="radio"
+                    name="star"
+                    value="☆☆"
+                    checked={isSelected("☆☆")}
                     onChange={handleRadioClick}
                 />  <input
+                    className="rateBook"
                     type="radio"
                     name="star"
-                    value="twoStars"
-                    checked={isSelected("twoStars")}
+                    value="☆☆☆"
+                    checked={isSelected("☆☆☆")}
                     onChange={handleRadioClick}
                 />  <input
+                    className="rateBook"
                     type="radio"
                     name="star"
-                    value="threeStars"
-                    checked={isSelected("threeStars")}
-                    onChange={handleRadioClick}
-                />  <input
-                    type="radio"
-                    name="star"
-                    value="fourStars"
-                    checked={isSelected("fourStars")}
+                    value="☆☆☆☆"
+                    checked={isSelected("☆☆☆☆")}
                     onChange={handleRadioClick}
                 />
                 <input
+                    className="rateBook"
                     type="radio"
                     name="star"
-                    value="fiveStars"
-                    checked={isSelected("fiveStars")}
+                    value="☆☆☆☆☆"
+                    checked={isSelected("☆☆☆☆☆")}
                     onChange={handleRadioClick}
                 /><br></br>
                 <Tooltip title="Remove from Completed" placement="top">
@@ -71,7 +77,7 @@ const CompletedList =
             <Fragment>
                 <h1>Completed List page</h1>
                 <section>{elements} </section>
-                <h1>{bookRate}</h1>
+                {/* <h1>{bookRate}</h1> */}
                 {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)
     }

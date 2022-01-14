@@ -11,12 +11,14 @@ import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
 import './App.css';
 
-function App({ bookRate }) {
+function App() {
   const [auth, setAuth] = useState(null);
   const [books, setBooks] = useState([]);
   const [completedList, setCompletedList] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const [bookDetails, setBookDetails] = useState("");
+  const [bookRate, setBookRate] = useState("");
+
   const [showDialog, setShowDialog] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
 
@@ -53,7 +55,7 @@ function App({ bookRate }) {
           <Link to="/Search">Discover</Link><span> </span>
           <Link to="/CompletedList">Completed List</Link><span> </span>
           <Link to="/ReadingList">Reading List</Link><span> </span>
-          {/* {setShowDialog(false)} */}
+          <Redirect to="/Search" />
         </>
         ) : <Redirect to="/Login" />}
         {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
@@ -66,11 +68,11 @@ function App({ bookRate }) {
             setReadingList={setReadingList}
             readingList={readingList} />} />
           <Route exact path="/CompletedList" component={() =>
-            <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} />} />
+            <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} setBookRate={setBookRate} />} />
           <Route exact path="/ReadingList" component={() =>
             <ReadingList setReadingList={setReadingList} readingList={readingList}
               setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
-          <Route exact path="/Details" component={() => <Details bookDetails={bookDetails} bookRate={bookRate} />} />
+          <Route exact path="/Details" component={() => <Details bookDetails={bookDetails} bookRate={bookRate} setBookRate={setBookRate} />} />
         </Switch>
       </div>
     </BrowserRouter >
