@@ -1,3 +1,8 @@
+body{
+
+  background-image: url("https://cdn.pixabay.com/photo/2020/07/23/17/54/mountain-5431950__340.png");
+background-size: cover;
+}
 .App {
   text-align:center;
 }
@@ -6,7 +11,6 @@
 }
 .dropdown-toggle{
   display: flex;
-  
-  /* background-color: yellow; */
+
 }
 
