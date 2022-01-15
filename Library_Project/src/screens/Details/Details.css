@@ -1,3 +1,15 @@
-.rateBook:checked{
+.Details{
+    text-align:left;
+    margin-left: 10%;
+    width: 60%;
+}
+input:checked{
     content: \2605;
+}
+textarea{
+    width: 80%;
+    height: 20vh;
+}
+p{
+    width: 80%;
 }

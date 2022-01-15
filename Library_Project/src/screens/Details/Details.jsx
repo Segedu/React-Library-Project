@@ -4,15 +4,13 @@ import './Details.css';
 
 const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
     const [newNoteName, setNewNoteName] = useState([]);
+    // let array = notes;
+    // todo: book id , grade, email
 
-    // todo: book id , user note, grade, email
-    console.log({ notes });
-    // let id = 0;
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) };
 
-    const AddNote = (todo) => {
-        // let obj = { id: id++, text: todo }
-        let obj = { text: todo }
+    const AddNote = (todo, bookDetailsId) => {
+        let obj = { id: bookDetailsId, text: todo };
         const notesArray = [obj, ...notes];
         setNotes(notesArray);
         window.localStorage.setItem("Notes", JSON.stringify(notesArray));
@@ -25,25 +23,20 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         window.localStorage.setItem("Grades", JSON.stringify(bookRate));
     };
 
+    // const elements = notes.map(note => {
+    //     return <p key={note.id}>{note.text}</p>
+    // })
 
-
-    // }
-
-    const elements = notes.map(note => {
-        <p key={note.text}>{note.text}</p>
-    })
-
-
-    return (<Fragment>
+    return (<div className="Details">
         <h1>details page</h1>
+        <img src={bookDetails.volumeInfo.imageLinks?.thumbnail || ""} />
         <h3>{bookDetails.volumeInfo.title}</h3>
         <p>{bookDetails.volumeInfo.authors[0]}</p>
-        <img src={bookDetails.volumeInfo.imageLinks?.thumbnail || ""} />
+        <h3>{bookRate}</h3>
         <p >{bookDetails.volumeInfo.description}</p>
         <textarea placeholder="Notes" onChange={(e) => { bookDetails.volumeInfo.note = addTaskInputHandler(e) }} />
+        <button onClick={() => AddNote(newNoteName, bookDetails.id)}>save note</button>
         <h3>{bookDetails.volumeInfo.note}</h3>
-        <button onClick={() => AddNote(newNoteName)}>save note</button>
-        <h3>{bookRate}</h3>
         <input
             className="rateBook"
             type="radio"
@@ -93,11 +86,11 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
         /><br></br>
 
         {/* <h3>Book Rate:{bookRate}</h3> */}
-        {/* <article>{notes ? elements : bookDetails}</article> */}
+        <article>{notes ? notes.map(note => {
+            return <p key={note.id}>{note.text}</p>
+        }) : ""}</article>
         <article>{newNoteName ? "" : bookDetails}</article>
-
-
-    </Fragment>)
+    </div>)
 }
 
 export default Details;

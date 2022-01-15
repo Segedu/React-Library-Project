@@ -29,14 +29,15 @@ const Search = ({ books, readingList, setReadingList }) => {
     }
 
     const addToList = (bookId, category, setFunction) => {
-        const foundBook = books.find(book => book.id == bookId)
+        const foundBook = books.find(book => book.id == bookId);
         if (category.indexOf(foundBook) > -1) {
             alert("already in the reading list")
         } else {
             const updatedBooks = [foundBook, ...category];
             setFunction(updatedBooks);
-            // let saveBook = localStorage.setItem("ReadingList", [foundBook.id]);
-            // console.log(saveBook);
+            //    let tolocal = [foundBook.id, ...category]
+            let saveBook = localStorage.setItem("ReadingList", JSON.stringify(updatedBooks));
+            console.log(saveBook);
         }
     }
 
