@@ -40,28 +40,14 @@ function App() {
   return (
     <BrowserRouter>
 
-      {/* {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />} */}
-      {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
-      {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
 
       <div className="App">
-        {!auth ? (
-          <>
-            <Dropdown className="d-inline mx-2">
-              <Dropdown.Toggle id="dropdown-autoclose-true">
-                <BiMenu fontSize="x-large" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/"><Link to="/">Home</Link></Dropdown.Item>
-                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
-                {/* <Dropdown.Item href="#/action-3">Other</Dropdown.Item> */}
-              </Dropdown.Menu>
-            </Dropdown>
-          </>
-        ) : <Redirect to="/Search" />}
-
+        {/* {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />} */}
+        {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
+        {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
         {auth ? (
           <>
+            <Logout setAuth={setAuth} />
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle id="dropdown-autoclose-true">
                 <BiMenu fontSize="x-large" />
@@ -73,10 +59,23 @@ function App() {
                 <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Logout setAuth={setAuth} />
             <Redirect to="/Search" />
           </>
         ) : <Redirect to="/" />}
+        {!auth ? (
+          <>
+            <Dropdown className="d-inline mx-2">
+              <Dropdown.Toggle id="dropdown-autoclose-true">
+                <BiMenu fontSize="x-large" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/"><Link to="/">Home</Link></Dropdown.Item>
+                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </>
+        ) : <Redirect to="/Search" />}
+
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
