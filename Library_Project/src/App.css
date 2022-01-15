@@ -4,13 +4,13 @@ background-color: black;
 .App {
 
 }
-.dropdown-item{
-  /* display: flex;   */
-  float: right;
-}
 .dropdown-toggle{
   float: right;
   /* display: flex; */
 
+}
+.dropdown-item{
+  /* display: flex;   */
+  float: right;
 }
 

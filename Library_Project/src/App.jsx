@@ -40,8 +40,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
-        {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
+        {/* {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""} */}
+        {/* {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""} */}
         {auth ? (
           <>
             <Logout setAuth={setAuth} />
@@ -74,7 +74,7 @@ function App() {
         ) : <Redirect to="/Search" />}
 
         <Switch>
-          <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
+          <Route exact path="/" component={() => <HomePage showDialog={showDialog} showRegisterDialog={showRegisterDialog} setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />
           <Route exact path="/Login" component={() => <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} />} />
           <Route exact path="/Register" component={() => <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} />} />
           <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books} setReadingList={setReadingList} readingList={readingList} />} />

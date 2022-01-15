@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './Details.css';
+import './Details.module.css';
 
 const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
     const [newNoteName, setNewNoteName] = useState([]);

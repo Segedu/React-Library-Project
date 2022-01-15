@@ -1,10 +1,9 @@
 import { Fragment, useState } from 'react';
-import './CompletedList.css';
 import { Link, Redirect } from "react-router-dom";
 import { BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import '../Details/Details.css';
+import './CompletedList.module.css';
 
 const CompletedList =
     ({ setCompletedList, completedList, bookRate, setBookRate, setBookDetails }) => {
