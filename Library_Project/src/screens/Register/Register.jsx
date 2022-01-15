@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { API_KEY } from '../../../logic/key';
-import '../Login/Login.css';
+import '../Login/Login.module.css';
 
 const Register = ({ setAuth, showRegisterDialog, setShowRegisterDialog }) => {
     const [userEmail, setUserEmail] = useState("");

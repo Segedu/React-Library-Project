@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from "axios";
 import { BrowserRouter, Switch, Route, Link, Router, Redirect, } from "react-router-dom";
+import axios from "axios";
 import HomePage from './screens/HomePage/HomePage';
 import Login from './screens/Login/Login';
 import Register from './screens/Register/Register';
@@ -9,27 +9,27 @@ import Search from './screens/Search/Search';
 import CompletedList from './screens/CompletedList/CompletedList';
 import ReadingList from './screens/ReadingList/ReadingList';
 import Details from './screens/Details/Details';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { BiMenu } from "react-icons/bi";
 import './App.css';
 
-
 function App() {
-  const [auth, setAuth] = useState(null);
-  const [books, setBooks] = useState([]);
-  const [completedList, setCompletedList] = useState([]);
-  const [readingList, setReadingList] = useState([]);
+  const [auth, setAuth] = useState(localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : null);
+  const [completedList, setCompletedList] = useState(localStorage.getItem("CompletedList") ? JSON.parse(localStorage.getItem("CompletedList")) : []);
+  const [readingList, setReadingList] = useState(localStorage.getItem("ReadingList") ? JSON.parse(localStorage.getItem("ReadingList")) : []);
+  const [bookRate, setBookRate] = useState(localStorage.getItem("Grades") ? JSON.parse(localStorage.getItem("Grades")) : null);
+  const [notes, setNotes] = useState(localStorage.getItem("Notes") ? JSON.parse(localStorage.getItem("Notes")) : []);
   const [bookDetails, setBookDetails] = useState("");
-  const [bookRate, setBookRate] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
-  const [notes, setNotes] = useState([]);
+  const [books, setBooks] = useState([]);
 
   const url = "/data/data.js";
 
   useEffect(getData, []);
 
   function getData() {
+
     axios.get(url)
       .then(response => {
         const data = JSON.parse(JSON.stringify(response.data))
@@ -39,10 +39,7 @@ function App() {
 
   return (
     <BrowserRouter>
-
-
       <div className="App">
-        {/* {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />} */}
         {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
         {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
         {auth ? (
@@ -75,7 +72,6 @@ function App() {
             </Dropdown>
           </>
         ) : <Redirect to="/Search" />}
-
 
         <Switch>
           <Route exact path="/" component={() => <HomePage setShowRegisterDialog={setShowRegisterDialog} setShowDialog={setShowDialog} setAuth={setAuth} />} />

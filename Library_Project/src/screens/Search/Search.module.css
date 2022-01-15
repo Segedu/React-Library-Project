@@ -2,17 +2,18 @@
 text-decoration: none;
 text-align: left;
 }
+
 section{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 25%);
     gap: 15px;    
+    margin-top: 5%;
 }
 article{
     width: 100%;
     box-shadow: 4px 4px 4px rgb(206, 198, 198);
 }
-
 img{
     width: 80%;
     height: 50vh;
@@ -20,20 +21,26 @@ img{
 h1{
     margin-left: 1%;
 }
-
-.Description{
+.description{
     text-align: left;
+    overflow: hidden;
     width: 80%;
     height:10vh;
-    overflow: hidden;
 }
 button{
-
     border:none;
     padding: 1.5%;
     margin: 1%;
 }
-input{
-    margin: 1%;
+.searchInput{
+      margin: 1%;
     padding: 0.5%;
+    width: 63%;
+    margin-left: 2%;
+}
+.searchInput::placeholder{
+    color: black;
+}
+h1{
+    display: inline;
 }

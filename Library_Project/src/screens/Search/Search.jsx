@@ -2,7 +2,8 @@ import { BiBookAdd } from "react-icons/bi";
 import { useState, Fragment } from "react";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import './Search.css';
+import styles from './Search.module.css';
+
 
 const Search = ({ books, readingList, setReadingList }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
@@ -58,23 +59,23 @@ const Search = ({ books, readingList, setReadingList }) => {
             <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
             <h2>{book.volumeInfo.title}</h2>
             <p>{book.volumeInfo.authors}</p>
-            <p className="Description" >{book.volumeInfo.description}</p>
+            <p className={styles.description} >{book.volumeInfo.description}</p>
             <Tooltip title="Add To Read List" placement="top">
                 <Button> <BiBookAdd fontSize="x-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
             </Tooltip>
         </article >);
 
     return (
-        <Fragment>
+        <div>
             <h1>Discover</h1>
-            <input type="text" onChange={(e) => {
+            <input className={styles.searchInput} type="text" placeholder="Search book.." onChange={(e) => {
                 e.target.value
                 const searchInput = (e.target.value);
                 setSearch(searchInput)
                 searchStringInAuthorTitleDescription(searchInput.toLowerCase());
             }} placeholder="Search Book..." />
-            <section>{search ? searchElements : generalBooksGallery}</section>
-        </Fragment >)
+            <section >{search ? searchElements : generalBooksGallery}</section>
+        </div >)
 }
 
 export default Search;

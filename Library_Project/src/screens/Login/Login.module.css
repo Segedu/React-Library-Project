@@ -1,6 +1,5 @@
 dialog{
-  
-   height: 50vh; 
+    height: 50vh; 
     align-items: center; 
     border: none;
     position: relative;
@@ -15,29 +14,29 @@ dialog{
 }
 
 button{
-        margin: 1%;
+    margin: 1%;
     padding: 2%;
     font-size: large;
-    
+   
 }
+
 input{
     border-radius: 5px;
     margin: 2%;
     margin-bottom: 2%;
-    padding: 3%;
+    padding: 2%;
     background: none;
-    border-bottom:2px solid white;
     font-weight: bold;
     font-size: medium;
     color: black;
-    
 }
 
 input::content{
     font-size: medium;
-    color: white;
-    
+    color: white;    
 }
+
 input::placeholder{
     font-size: medium;
-    color: white}
+    color: white
+}
