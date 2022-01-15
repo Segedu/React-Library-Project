@@ -15,9 +15,6 @@ const ReadingList =
             const array = [foundBook, ...completedList];
             setCompletedList(array);
             removeFromList(bookId, readingList, setReadingList);
-            // let checkReadingListNotEmpty = JSON.stringify(readingList ? readingList : [])
-            // localStorage.setItem("ReadingList", JSON.stringify(readingList));
-            // let checkCompletedListNotEmpty = JSON.stringify(completedList ? completedList : [])
             localStorage.setItem("CompletedList", JSON.stringify(completedList));
         }
 
