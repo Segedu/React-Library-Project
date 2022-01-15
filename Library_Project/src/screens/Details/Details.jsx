@@ -10,17 +10,17 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) };
 
     const AddNote = (todo, bookDetailsId) => {
-        let obj = { id: bookDetailsId, text: todo };
-        const notesArray = [obj, ...notes];
+        let noteObj = { id: bookDetailsId, text: todo };
+        const notesArray = [noteObj, ...notes];
         setNotes(notesArray);
-        window.localStorage.setItem("Notes", JSON.stringify(notesArray));
+        localStorage.setItem("Notes", JSON.stringify(notesArray));
     }
 
     const isSelected = (value) => bookRate === value;
 
     const handleRadioClick = (e) => {
         setBookRate(e.currentTarget.value)
-        window.localStorage.setItem("Grades", JSON.stringify(bookRate));
+        localStorage.setItem("Grades", JSON.stringify(bookRate));
     };
 
     // const elements = notes.map(note => {
@@ -29,7 +29,7 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
 
     return (<div className="Details">
         <h1>details page</h1>
-        <img src={bookDetails.volumeInfo.imageLinks?.thumbnail || ""} />
+        <img src={bookDetails.volumeInfo.imageLinks.thumbnail || ""} />
         <h3>{bookDetails.volumeInfo.title}</h3>
         <p>{bookDetails.volumeInfo.authors[0]}</p>
         <h3>{bookRate}</h3>
@@ -43,9 +43,9 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             name="star"
             value="☆"
             checked={isSelected("☆")}
-            onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
+            // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
+            onChange={handleRadioClick}
 
-        // onChange={handleRadioClick}
         />  <input
             className="rateBook"
             type="radio"
@@ -81,7 +81,6 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             value="☆☆☆☆☆"
             checked={isSelected("☆☆☆☆☆")}
             // onChange={(e) => { bookDetails.volumeInfo.bookRate = handleRadioClick(e) }}
-
             onChange={handleRadioClick}
         /><br></br>
 

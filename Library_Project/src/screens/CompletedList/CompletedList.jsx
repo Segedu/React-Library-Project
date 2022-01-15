@@ -38,7 +38,9 @@ const CompletedList =
                     name="star"
                     value="☆"
                     checked={isSelected("☆")}
-                    onChange={(e) => { completed.volumeInfo.bookRate = handleRadioClick(e) }}
+                    onChange={handleRadioClick}
+
+                // onChange={(e) => { completed.volumeInfo.bookRate = handleRadioClick(e) }}
                 />  <input
                     className="rateBook"
                     type="radio"

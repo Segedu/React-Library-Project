@@ -44,6 +44,11 @@ const Login = ({ setAuth, showDialog, setShowDialog, setNotes, setBookRate, setR
             setBookRate(JSON.parse(grades));
             setReadingList(JSON.parse(reading));
             setCompletedList(JSON.parse(completed));
+        } else {
+            setNotes([]);
+            setBookRate("");
+            setReadingList([]);
+            setCompletedList([]);
         }
     }
 

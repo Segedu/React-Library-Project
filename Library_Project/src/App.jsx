@@ -40,7 +40,7 @@ function App() {
   return (
     <BrowserRouter>
 
-      {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />}
+      {/* {auth ? <Logout setAuth={setAuth} /> : <Redirect to="/" />} */}
       {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
       {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
 
@@ -59,20 +59,23 @@ function App() {
             </Dropdown>
           </>
         ) : <Redirect to="/Search" />}
-        {auth ? (<>
-          <Dropdown className="d-inline mx-2">
-            <Dropdown.Toggle id="dropdown-autoclose-true">
-              <BiMenu fontSize="x-large" />
-            </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
-              <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
-              <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Redirect to="/Search" />
-        </>
+        {auth ? (
+          <>
+            <Dropdown className="d-inline mx-2">
+              <Dropdown.Toggle id="dropdown-autoclose-true">
+                <BiMenu fontSize="x-large" />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+                <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
+                <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Logout setAuth={setAuth} />
+            <Redirect to="/Search" />
+          </>
         ) : <Redirect to="/" />}
 
         <Switch>
