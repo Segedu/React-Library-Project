@@ -8,19 +8,24 @@ import { Redirect } from "react-router-dom";
 const ReadingList =
     ({ setReadingList, readingList,
         setCompletedList, completedList, setBookDetails }) => {
-
         const [isRedirect, setIsRedirect] = useState(false);
 
-        const moveToCompleted = (bookId, listName, secondListName, setFunction, secondFunc) => {
+        const moveToCompleted = (bookId, completedList, readingList, setCompletedList, setReadingList) => {
             const foundBook = readingList.find(book => book.id == bookId);
-            const array = [foundBook, ...listName];
-            setFunction(array);
-            removeFromList(bookId, secondListName, secondFunc);
+            const array = [foundBook, ...completedList];
+            setCompletedList(array);
+            removeFromList(bookId, readingList, setReadingList);
+            // let checkReadingListNotEmpty = JSON.stringify(readingList ? readingList : [])
+            // localStorage.setItem("ReadingList", JSON.stringify(readingList));
+            // let checkCompletedListNotEmpty = JSON.stringify(completedList ? completedList : [])
+            localStorage.setItem("CompletedList", JSON.stringify(completedList));
         }
 
         const removeFromList = (bookId, listName, setFunction) => {
             const removeArray = [...listName].filter(book => book.id !== bookId);
             setFunction(removeArray);
+            localStorage.setItem("ReadingList", JSON.stringify(removeArray));
+            return removeArray
         }
 
         const showBookDetails = (bookId) => {
@@ -38,10 +43,10 @@ const ReadingList =
         }
 
         const elements = readingList.map((book) =>
-            <article onClick={() => { showBookDetails(book.id) }} key={book.id}>
+            <article key={book.id}>
                 <h3>{book.volumeInfo.title}</h3>
                 <p>{book.volumeInfo.authors}</p>
-                <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
+                <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
                 <p className="Description" >{shortDescription(book.volumeInfo.description)}</p>
                 <Tooltip title="Mark As Read" placement="top">
                     <Button> <BiBookBookmark fontSize="x-large" onClick={() => moveToCompleted(book.id, completedList, readingList, setCompletedList, setReadingList)} /></Button>
@@ -54,7 +59,7 @@ const ReadingList =
         return (
             <Fragment>
                 <h1>Reading List page</h1>
-                <section>{elements}</section>
+                <section>{elements ? elements : ""}</section>
                 {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)
     }

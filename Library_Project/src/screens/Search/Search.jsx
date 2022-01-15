@@ -35,9 +35,7 @@ const Search = ({ books, readingList, setReadingList }) => {
         } else {
             const updatedBooks = [foundBook, ...category];
             setFunction(updatedBooks);
-            //    let tolocal = [foundBook.id, ...category]
-            let saveBook = localStorage.setItem("ReadingList", JSON.stringify(updatedBooks));
-            console.log(saveBook);
+            localStorage.setItem("ReadingList", JSON.stringify(updatedBooks));
         }
     }
 

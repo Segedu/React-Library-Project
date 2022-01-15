@@ -17,6 +17,9 @@ const CompletedList =
         const removeFromList = (bookId, listName, setFunction) => {
             const removeArray = [...listName].filter(book => book.id !== bookId);
             setFunction(removeArray);
+            // let checkCompletedListNotEmpty = JSON.stringify(completedList ? completedList : [])
+            localStorage.setItem("CompletedList", JSON.stringify(removeArray));
+
         }
 
         const showBookDetails = (bookId) => {
