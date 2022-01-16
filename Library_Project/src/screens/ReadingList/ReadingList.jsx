@@ -3,7 +3,7 @@ import { BiBookBookmark, BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import { Redirect } from "react-router-dom";
-// import './ReadingList/ReadingList.module.css';
+import styles from './ReadingList.module.css';
 
 
 const ReadingList =
@@ -45,7 +45,7 @@ const ReadingList =
                 <h3>{book.volumeInfo.title}</h3>
                 <p>{book.volumeInfo.authors}</p>
                 <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
-                <p className="Description" >{shortDescription(book.volumeInfo.description)}</p>
+                <p className={styles.description} >{shortDescription(book.volumeInfo.description)}</p>
                 <Tooltip title="Mark As Read" placement="top">
                     <Button> <BiBookBookmark fontSize="x-large" onClick={() => moveToCompleted(book.id, completedList, readingList, setCompletedList, setReadingList)} /></Button>
                 </Tooltip>
@@ -56,7 +56,7 @@ const ReadingList =
 
         return (
             <Fragment>
-                <h1>Reading List page</h1>
+                <h1>Reading List</h1>
                 <section>{elements ? elements : ""}</section>
                 {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)

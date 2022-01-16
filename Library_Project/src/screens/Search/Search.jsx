@@ -45,11 +45,10 @@ const Search = ({ books, readingList, setReadingList }) => {
             <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
             <h2>{book.volumeInfo.title}</h2>
             <p>{book.volumeInfo.authors}</p>
-            <p className="Description">{book.volumeInfo.description}</p>
+            <p className={styles.description}>{book.volumeInfo.description}</p>
             <Tooltip title="Add To Read List" placement="top">
                 <Button> <BiBookAdd fontSize="xx-large" onClick={() => addToList(book.id, readingList, setReadingList)} /></Button>
             </Tooltip>
-
         </article>);
 
     const generalBooksGallery = elements.splice(0, 10);
@@ -73,9 +72,10 @@ const Search = ({ books, readingList, setReadingList }) => {
                 const searchInput = (e.target.value);
                 setSearch(searchInput)
                 searchStringInAuthorTitleDescription(searchInput.toLowerCase());
-            }} placeholder="Search Book..." />
+            }} />
             <section >{search ? searchElements : generalBooksGallery}</section>
-        </div >)
+        </div >
+    )
 }
 
 export default Search;

@@ -1,13 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { API_KEY } from '../../../logic/key';
 import './Login.module.css';
 
-const Login = ({ setAuth, showDialog, setShowDialog, setNotes, setBookRate, setReadingList, setCompletedList }) => {
+const Login = ({ setAuth, showDialog, setShowDialog }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorFromServer, setErrorFromServer] = useState(false);
     const LOCAL_STORAGE_AUTH_KEY = "auth";
+   
 
     const login = () => {
         // setLoading(true)
@@ -29,26 +30,6 @@ const Login = ({ setAuth, showDialog, setShowDialog, setNotes, setBookRate, setR
                 setErrorFromServer(error)
             });
     }
-
-    // function getLocalStorageData() {
-    //     if (LOCAL_STORAGE_AUTH_KEY !== null && "ReadingList" !== null && "CompletedList" !== null && "Notes" !== null && "Grades" !== null) {
-    //         const data = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY);
-    //         const notes = localStorage.getItem("Notes");
-    //         const grades = localStorage.getItem("Grades");
-    //         const reading = localStorage.getItem("ReadingList");
-    //         const completed = localStorage.getItem("CompletedList");
-    //         setAuth(JSON.parse(data));
-    //         setNotes(JSON.parse(notes));
-    //         setBookRate(JSON.parse(grades));
-    //         setReadingList(JSON.parse(reading));
-    //         setCompletedList(JSON.parse(completed));
-    //     } else {
-    //         setNotes([]);
-    //         setBookRate("");
-    //         setReadingList([]);
-    //         setCompletedList([]);
-    //     }
-    // }
 
     return (
         <div className="Form">

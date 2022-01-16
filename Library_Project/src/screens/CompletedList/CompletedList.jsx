@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import './CompletedList.module.css';
+import styles from './CompletedList.module.css';
 
 const CompletedList =
     ({ setCompletedList, completedList, bookRate, setBookRate, setBookDetails }) => {
@@ -24,13 +24,20 @@ const CompletedList =
             setBookDetails(foundBook);
             setIsRedirect(true);
         }
+        function shortDescription(description) {
+            if (description.length > 100) {
+                return description.slice(0, 100) + "... "
+            } else {
+                return description;
+            }
+        }
 
         const elements = completedList.map((completed, id) =>
             <article key={id}>
                 <h3>{completed.volumeInfo.title}</h3>
                 <p>{completed.volumeInfo.author}</p>
                 <img onClick={() => { showBookDetails(completed.id) }} src={completed.volumeInfo.imageLinks?.thumbnail || ""} />
-                <p className="Description">{completed.volumeInfo.description}</p>
+                <p className={styles.description}>{shortDescription(completed.volumeInfo.description)}</p>
                 <input
                     className="rateBook"
                     type="radio"
@@ -39,7 +46,6 @@ const CompletedList =
                     checked={isSelected("☆")}
                     onChange={handleRadioClick}
 
-                // onChange={(e) => { completed.volumeInfo.bookRate = handleRadioClick(e) }}
                 />  <input
                     className="rateBook"
                     type="radio"
@@ -77,9 +83,8 @@ const CompletedList =
 
         return (
             <Fragment>
-                <h1>Completed List page</h1>
+                <h1>Completed List </h1>
                 <section>{elements} </section>
-                {/* <h1>{bookRate}</h1> */}
                 {isRedirect ? < Redirect to="/Details" /> : ""}
             </Fragment>)
     }

@@ -2,7 +2,6 @@
 text-decoration: none;
 text-align: left;
 }
-
 section{
     display: grid;
     justify-content: center;
@@ -23,9 +22,8 @@ h1{
 }
 .description{
     text-align: left;
-    overflow: hidden;
-    width: 80%;
     height:10vh;
+    overflow: hidden;
 }
 button{
     border:none;

@@ -1,16 +1,12 @@
 body{
-background-color: black;
-}
-.App {
-
+background-color: #aaaa6a;
 }
 .dropdown-toggle{
   float: right;
-  /* display: flex; */
-
 }
 .dropdown-item{
-  /* display: flex;   */
   float: right;
+  flex-direction: column;
+  display: flex;
 }
 

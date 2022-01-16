@@ -1,8 +1,7 @@
-body{
-background-image: url("https://cdn.pixabay.com/photo/2020/07/23/17/54/mountain-5431950__340.png");
-background-size: cover;
-}
+
 .HomePage{
+    /* background-image: url("https://cdn.pixabay.com/photo/2020/06/04/19/56/mountains-5260303__340.jpg"); */
+    /* background-size: cover; */
     display: flex;
     justify-content: center;
 }
