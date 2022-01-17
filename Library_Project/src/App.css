@@ -1,5 +1,6 @@
 body{
-background-color: #aaaa6a;
+/* background-color: #aaaa6a; */
+background-color: white;
 }
 .dropdown-toggle{
   float: right;

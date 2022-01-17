@@ -42,9 +42,9 @@ const ReadingList =
 
         const elements = readingList.map((book) =>
             <article key={book.id}>
+                <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
                 <h3>{book.volumeInfo.title}</h3>
                 <p>{book.volumeInfo.authors}</p>
-                <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
                 <p className={styles.description} >{shortDescription(book.volumeInfo.description)}</p>
                 <Tooltip title="Mark As Read" placement="top">
                     <Button> <BiBookBookmark fontSize="x-large" onClick={() => moveToCompleted(book.id, completedList, readingList, setCompletedList, setReadingList)} /></Button>

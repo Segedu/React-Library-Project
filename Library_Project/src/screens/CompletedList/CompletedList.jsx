@@ -34,9 +34,9 @@ const CompletedList =
 
         const elements = completedList.map((completed, id) =>
             <article key={id}>
+                <img onClick={() => { showBookDetails(completed.id) }} src={completed.volumeInfo.imageLinks?.thumbnail || ""} />
                 <h3>{completed.volumeInfo.title}</h3>
                 <p>{completed.volumeInfo.author}</p>
-                <img onClick={() => { showBookDetails(completed.id) }} src={completed.volumeInfo.imageLinks?.thumbnail || ""} />
                 <p className={styles.description}>{shortDescription(completed.volumeInfo.description)}</p>
                 <input
                     className="rateBook"
