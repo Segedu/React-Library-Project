@@ -43,7 +43,7 @@ const Search = ({ books, readingList, setReadingList, setBookDetails }) => {
 
     const elements = books.map((book) =>
         <article key={book.id}>
-            <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
+            <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
             <h2>{book.volumeInfo.title}</h2>
             <p>{book.volumeInfo.authors}</p>
             <p className={styles.description}>{book.volumeInfo.description}</p>
