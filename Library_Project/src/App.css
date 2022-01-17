@@ -1,13 +1,12 @@
 body{
-/* background-color: #aaaa6a; */
 background-color: white;
 }
 .dropdown-toggle{
   float: right;
 }
 .dropdown-item{
-  float: right;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
+ 
 }
 
