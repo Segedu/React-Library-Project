@@ -53,7 +53,7 @@ function App() {
               <Dropdown.Menu>
                 <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
                 <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
-                <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">ReadingList List</Link></Dropdown.Item>
+                <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">Reading List</Link></Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <Redirect to="/Search" />
