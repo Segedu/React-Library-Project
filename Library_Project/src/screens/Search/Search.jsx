@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import styles from './Search.module.css';
 
 
-const Search = ({ books, readingList, setReadingList, setBookDetails }) => {
+const Search = ({ books, readingList, setReadingList }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
     const [search, setSearch] = useState("");
 
