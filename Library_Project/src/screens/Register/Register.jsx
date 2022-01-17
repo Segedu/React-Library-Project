@@ -41,7 +41,7 @@ const Register = ({ setAuth, showRegisterDialog, setShowRegisterDialog }) => {
         <div className="Form">
             <dialog open={showRegisterDialog ? 'open' : 'close'}>
                 <button onClick={() => { setShowRegisterDialog(false) }}>X</button>
-                <h3>Register Here</h3>
+                <h2>Register</h2>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     if (password === confirmPassword) {

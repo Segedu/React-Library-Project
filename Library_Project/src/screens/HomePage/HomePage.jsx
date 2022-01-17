@@ -1,4 +1,4 @@
-import './HomePage.module.css';
+import'./HomePage.module.css';
 
 const HomePage = ({ setShowDialog, setShowRegisterDialog }) => {
     return (

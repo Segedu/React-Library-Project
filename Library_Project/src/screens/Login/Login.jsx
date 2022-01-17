@@ -35,7 +35,7 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
         <div className="Form">
             <dialog open={showDialog ? 'open' : 'close'}>
                 <button onClick={() => { setShowDialog(false) }}>X</button>
-                <h3>Login Here</h3>
+                <h2>Login</h2>
                 <form onSubmit={(e) => {
                     e.preventDefault(),
                         login()
