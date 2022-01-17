@@ -9,4 +9,4 @@ const HomePage = ({ setShowDialog, setShowRegisterDialog }) => {
         </div>)
 }
 
-export default HomePage;    
+export default HomePage;

@@ -1,16 +1,16 @@
 import { BiBookAdd } from "react-icons/bi";
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import styles from './Search.module.css';
 
 
-const Search = ({ books, readingList, setReadingList }) => {
+const Search = ({ books, readingList, setReadingList, setBookDetails }) => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
     const [search, setSearch] = useState("");
 
-    let tempBook = books;
     function searchStringInAuthorTitleDescription(userInput) {
+        let tempBook = books;
         tempBook.forEach(element => {
             element.volumeInfo.title.toLowerCase();
             element.volumeInfo.description?.toLowerCase();
@@ -29,6 +29,7 @@ const Search = ({ books, readingList, setReadingList }) => {
         setSearchBooksArray(shortenArray)
     }
 
+
     const addToList = (bookId, category, setFunction) => {
         const foundBook = books.find(book => book.id == bookId);
         if (category.indexOf(foundBook) > -1) {
@@ -42,7 +43,7 @@ const Search = ({ books, readingList, setReadingList }) => {
 
     const elements = books.map((book) =>
         <article key={book.id}>
-            <img src={book.volumeInfo.imageLinks?.thumbnail || ""} />
+            <img src={book.volumeInfo.imageLinks?.thumbnail || ""} onClick={() => { showBookDetails(book.id) }} />
             <h2>{book.volumeInfo.title}</h2>
             <p>{book.volumeInfo.authors}</p>
             <p className={styles.description}>{book.volumeInfo.description}</p>

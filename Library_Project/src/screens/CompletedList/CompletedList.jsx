@@ -24,6 +24,7 @@ const CompletedList =
             setBookDetails(foundBook);
             setIsRedirect(true);
         }
+        
         function shortDescription(description) {
             if (description.length > 100) {
                 return description.slice(0, 100) + "... "
