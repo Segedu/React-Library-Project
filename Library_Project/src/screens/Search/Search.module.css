@@ -33,8 +33,8 @@ button{
 .searchInput{
       margin: 1%;
     padding: 0.5%;
-    width: 63%;
-    margin-left: 2%;
+    width: 76%;
+    margin-left: 4%;
 }
 .searchInput::placeholder{
     color: black;

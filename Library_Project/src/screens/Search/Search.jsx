@@ -67,7 +67,6 @@ const Search = ({ books, readingList, setReadingList }) => {
 
     return (
         <div>
-            <h1>Discover</h1>
             <input className={styles.searchInput} type="text" placeholder="Search book.." onChange={(e) => {
                 e.target.value
                 const searchInput = (e.target.value);
