@@ -29,7 +29,6 @@ function App() {
   useEffect(getData, []);
 
   function getData() {
-
     axios.get(url)
       .then(response => {
         const data = JSON.parse(JSON.stringify(response.data))

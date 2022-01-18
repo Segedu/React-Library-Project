@@ -30,7 +30,6 @@ const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
             <p >{bookDetails.volumeInfo.description}</p>
             <textarea placeholder="Notes" onChange={(e) => { bookDetails.volumeInfo.note = addTaskInputHandler(e) }} /><br></br>
             <button onClick={() => AddNote(newNoteName, bookDetails.id)}>save note</button>
-            {/* <h3>{bookDetails.volumeInfo.note}</h3> */}
             <input
                 className="rateBook"
                 type="radio"
