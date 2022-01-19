@@ -8,14 +8,9 @@ input:checked{
     content: \2605;
 }
 textarea{
-    /* margin-left: 10%; */
     width: 80%;
     height: 20vh;
 }
 p{
-    /* margin-left: 10%; */
      width: 80%;
-    /* overflow: hidden;  */
-    /* float: left; */
-
 }
