@@ -1,17 +1,18 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { API_KEY } from '../../../logic/key';
+import Context from "../../components/context";
 import './Login.module.css';
 
-const Login = ({ setAuth, showDialog, setShowDialog }) => {
-    const [email, setEmail] = useState("");
+const Login = () => {
+    // const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorFromServer, setErrorFromServer] = useState(false);
     const LOCAL_STORAGE_AUTH_KEY = "auth";
-   
+    const { setAuth, showDialog, setShowDialog, email, setEmail } = useContext(Context);
 
     const login = () => {
-        // setLoading(true)
+
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
         axios
             .post(url, {
@@ -19,11 +20,8 @@ const Login = ({ setAuth, showDialog, setShowDialog }) => {
                 password,
             })
             .then(function (response) {
-                // setTimeout(() => {
-                // setLoading(false)
-                setAuth(response.data);
+                setAuth(response.data.email);
                 localStorage.setItem(LOCAL_STORAGE_AUTH_KEY, JSON.stringify(response.data));
-                // }, 5000)
             })
             .catch(function (error) {
                 console.log(error)

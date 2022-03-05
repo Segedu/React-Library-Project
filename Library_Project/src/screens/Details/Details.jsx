@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Context from "../../components/context";
 import styles from './Details.module.css';
 
-const Details = ({ bookDetails, bookRate, setBookRate, notes, setNotes }) => {
+const Details = () => {
     const [newNoteName, setNewNoteName] = useState([]);
+    const { bookDetails, bookRate, setBookRate, notes, setNotes } = useContext(Context);
 
     const addTaskInputHandler = (e) => { setNewNoteName(e.target.value) };
 

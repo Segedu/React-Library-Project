@@ -1,6 +1,10 @@
-import'./HomePage.module.css';
+import { useContext } from 'react';
+import Context from '../../components/context';
+import './HomePage.module.css';
 
-const HomePage = ({ setShowDialog, setShowRegisterDialog }) => {
+const HomePage = () => {
+    const { setShowDialog, setShowRegisterDialog } = useContext(Context);
+
     return (
         <div className='HomePage'>
             <h2>Stoa Library</h2>

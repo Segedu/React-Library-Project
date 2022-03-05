@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Link, Router, Redirect, } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link, Redirect, } from "react-router-dom";
+import Context from './components/context';
 import axios from "axios";
 import HomePage from './screens/HomePage/HomePage';
 import Login from './screens/Login/Login';
@@ -14,9 +15,10 @@ import { BiMenu } from "react-icons/bi";
 import './App.css';
 
 function App() {
+  const [email, setEmail] = useState("");
   const [auth, setAuth] = useState(localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : null);
   const [completedList, setCompletedList] = useState(localStorage.getItem("CompletedList") ? JSON.parse(localStorage.getItem("CompletedList")) : []);
-  const [readingList, setReadingList] = useState(localStorage.getItem("ReadingList") ? JSON.parse(localStorage.getItem("ReadingList")) : []);
+  const [readingList, setReadingList] = useState(JSON.parse(localStorage.getItem("auth")).email == email ? JSON.parse(localStorage.getItem("ReadingList")) : []);
   const [bookRate, setBookRate] = useState(localStorage.getItem("Grades") ? JSON.parse(localStorage.getItem("Grades")) : null);
   const [notes, setNotes] = useState(localStorage.getItem("Notes") ? JSON.parse(localStorage.getItem("Notes")) : []);
   const [bookDetails, setBookDetails] = useState("");
@@ -37,52 +39,58 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        {showDialog ? <Login setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} setAuth={setAuth} /> : ""}
-        {showRegisterDialog ? <Register setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} setAuth={setAuth} /> : ""}
-        {auth ? (
-          <>
-            <Logout setAuth={setAuth} />
-            <Dropdown className="d-inline mx-2">
-              <Dropdown.Toggle id="dropdown-autoclose-true">
-                <BiMenu fontSize="x-large" />
-              </Dropdown.Toggle>
+    <Context.Provider value={{
+      email, books, notes, readingList, bookDetails, bookRate, showDialog, completedList, showRegisterDialog, setReadingList, setAuth, setBooks, setEmail,
+      setShowRegisterDialog, setCompletedList, setBookRate, setBookDetails,
+      setNotes, setShowDialog
+    }}>
+      <BrowserRouter>
+        <div className="App">
+          {showDialog ? <Login /> : ""}
+          {showRegisterDialog ? <Register /> : ""}
+          {auth ? (
+            <>
+              <Logout setAuth={setAuth} />
+              <Dropdown className="d-inline mx-2">
+                <Dropdown.Toggle id="dropdown-autoclose-true">
+                  <BiMenu fontSize="x-large" />
+                </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
-                <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
-                <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">Reading List</Link></Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Redirect to="/Search" />
-          </>
-        ) : <Redirect to="/" />}
-        {!auth ? (
-          <>
-            <Dropdown className="d-inline mx-2">
-              <Dropdown.Toggle id="dropdown-autoclose-true">
-                <BiMenu fontSize="x-large" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/"><Link to="/">Home</Link></Dropdown.Item>
-                <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </>
-        ) : <Redirect to="/Search" />}
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+                  <Dropdown.Item href="/CompletedList"><Link to="/CompletedList">Completed List</Link></Dropdown.Item>
+                  <Dropdown.Item href="/ReadingList"><Link to="/ReadingList">Reading List</Link></Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Redirect to="/Search" />
+            </>
+          ) : <Redirect to="/" />}
+          {!auth ? (
+            <>
+              <Dropdown className="d-inline mx-2">
+                <Dropdown.Toggle id="dropdown-autoclose-true">
+                  <BiMenu fontSize="x-large" />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/"><Link to="/">Home</Link></Dropdown.Item>
+                  <Dropdown.Item href="/Search"><Link to="/Search">Discover</Link></Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
+          ) : <Redirect to="/Search" />}
+          <Switch>
+            <Route exact path="/" component={() => <HomePage />} />
+            <Route exact path="/Login" component={() => <Login />} />
+            <Route exact path="/Register" component={() => <Register />} />
+            <Route exact path="/Search" component={() => <Search />} />
+            <Route exact path="/CompletedList" component={() => <CompletedList />} />
+            <Route exact path="/ReadingList" component={() => <ReadingList />} />
+            <Route exact path="/Details" component={() => <Details />} />
+          </Switch>
+        </div>
+      </BrowserRouter >
+    </Context.Provider>
 
-        <Switch>
-          <Route exact path="/" component={() => <HomePage setAuth={setAuth} showDialog={showDialog} setShowDialog={setShowDialog} showRegisterDialog={showRegisterDialog} setShowRegisterDialog={setShowRegisterDialog} />} />
-          <Route exact path="/Login" component={() => <Login setAuth={setAuth} setCompletedList={setCompletedList} setReadingList={setReadingList} setBookRate={setBookRate} setNotes={setNotes} setShowDialog={setShowDialog} showDialog={showDialog} />} />
-          <Route exact path="/Register" component={() => <Register setAuth={setAuth} setShowRegisterDialog={setShowRegisterDialog} showRegisterDialog={showRegisterDialog} />} />
-          <Route exact path="/Search" component={() => <Search setBooks={setBooks} books={books} setReadingList={setReadingList} readingList={readingList} />} />
-          <Route exact path="/CompletedList" component={() => <CompletedList setCompletedList={setCompletedList} completedList={completedList} setBookDetails={setBookDetails} setBookRate={setBookRate} />} />
-          <Route exact path="/ReadingList" component={() => <ReadingList setReadingList={setReadingList} readingList={readingList} setCompletedList={setCompletedList} setBookDetails={setBookDetails} completedList={completedList} />} />
-          <Route exact path="/Details" component={() => <Details notes={notes} setNotes={setNotes} bookDetails={bookDetails} bookRate={bookRate} setBookRate={setBookRate} />} />
-        </Switch>
-      </div>
-    </BrowserRouter >
   )
 }
 

@@ -1,13 +1,15 @@
 import { BiBookAdd } from "react-icons/bi";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Context from "../../components/context";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import styles from './Search.module.css';
 
 
-const Search = ({ books, readingList, setReadingList }) => {
+const Search = () => {
     const [searchBooksArray, setSearchBooksArray] = useState([]);
     const [search, setSearch] = useState("");
+    const { books, readingList, setReadingList } = useContext(Context);
 
     function searchStringInAuthorTitleDescription(userInput) {
         let tempBook = books;

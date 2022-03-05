@@ -10,7 +10,7 @@ const Logout = ({ setAuth }) => {
     return (<Fragment>
         <button className="LogOutBtn" onClick={() => {
             setAuth(null)
-            window.localStorage.removeItem("auth");
+            // window.localStorage.removeItem("auth");
         }}>Logout</button>
     </Fragment >)
 }

@@ -1,15 +1,15 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useState } from "react";
+import Context from "../../components/context";
 import { BiBookBookmark, BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import { Redirect } from "react-router-dom";
 import styles from './ReadingList.module.css';
 
-
 const ReadingList =
-    ({ setReadingList, readingList,
-        setCompletedList, completedList, setBookDetails }) => {
+    () => {
         const [isRedirect, setIsRedirect] = useState(false);
+        const { setReadingList, readingList, setCompletedList, completedList, setBookDetails } = useContext(Context);
 
         const moveToCompleted = (bookId, completedList, readingList, setCompletedList, setReadingList) => {
             const foundBook = readingList.find(book => book.id == bookId);

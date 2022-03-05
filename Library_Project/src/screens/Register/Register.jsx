@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { API_KEY } from '../../../logic/key';
+import Context from "../../components/context";
 import '../Login/Login.module.css';
 
-const Register = ({ setAuth, showRegisterDialog, setShowRegisterDialog }) => {
+const Register = () => {
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState()
     const [errorFromServer, setErrorFromServer] = useState(false);
+    const { setAuth, showRegisterDialog, setShowRegisterDialog } = useContext(Context);
 
     function register() {
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`

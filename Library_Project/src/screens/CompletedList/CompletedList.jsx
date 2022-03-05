@@ -1,13 +1,15 @@
-import { Fragment, useState } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Fragment, useState, useContext } from 'react';
+import Context from '../../components/context';
+import { Redirect } from "react-router-dom";
 import { BiBook } from "react-icons/bi";
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import styles from './CompletedList.module.css';
 
 const CompletedList =
-    ({ setCompletedList, completedList, bookRate, setBookRate, setBookDetails }) => {
+    () => {
         const [isRedirect, setIsRedirect] = useState(false);
+        const { setCompletedList, completedList, bookRate, setBookRate, setBookDetails } = useContext(Context);
 
         const isSelected = (value) => bookRate === value;
 
@@ -24,7 +26,7 @@ const CompletedList =
             setBookDetails(foundBook);
             setIsRedirect(true);
         }
-        
+
         function shortDescription(description) {
             if (description.length > 100) {
                 return description.slice(0, 100) + "... "
